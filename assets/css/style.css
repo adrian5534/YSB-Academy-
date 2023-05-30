@@ -42,7 +42,7 @@
      * gradient color
      */
 
-
+      --gradient: linear-gradient(-90deg,hsl(151, 58%, 46%) 0%,hsl(170, 75%, 41%) 100%);
 
 /**
    * typography
@@ -1386,4 +1386,3 @@
 
 
 
-   
