@@ -365,7 +365,7 @@ body    {
     left: 0;
     width: 100%;
     background-color: var(--white);
-    padding: 12px;
+    padding-block: 12px;
     box-shadow: var(--shadow-1);
     z-index: 4;
 }
@@ -373,8 +373,8 @@ body    {
 .header.active { position: fixed; }
 
 .header .container,
-.header-actions 
-,.navbar .wrapper {
+.header-actions, 
+.navbar .wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
