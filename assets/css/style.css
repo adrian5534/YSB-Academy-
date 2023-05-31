@@ -577,8 +577,38 @@ body {
   #HERO
 \*-----------------------------------*/
 
+.hero { padding-block-start: calc(--section-padding) + 80px; }
 
+.hero .container {
+    display: grid;
+    gap: 40px
+}
 
+.hero-text {
+    color: var(--eerie-black-1);
+    font-size:  var(--fs-4);
+    text-align: center;
+    margin-block:18px 20px;
+}
+
+.hero .btn { margin-inline: auto;  }
+
+.hero-banner {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    align-self: start;
+    gap: 30px;
+}
+
+.her-banner .img-holder.one {
+    border-top-left-radius: 70px;
+    border-bottom-right-radius: 110px;
+}
+
+.hero-banner .img-holder.two {
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 90px;
+}
 
 
 
