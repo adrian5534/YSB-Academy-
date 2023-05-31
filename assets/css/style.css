@@ -66,7 +66,7 @@
    * spacing
    */
 
-   --section-padding: 75px;
+   --section-padding: 185px;
 
   /**
    * shadow
@@ -106,11 +106,11 @@
 \*-----------------------------------*/
 
 *,
-::before,
-::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 li { list-style: none; }
@@ -121,52 +121,52 @@ span,
 data,
 input,
 button,
-ion-icon { display: block;}
+ion-icon { display: block; }
 
-a   {
-    color: inherit;
-    text-decoration: none;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 img { height: auto; }
 
 input,
-button  {
-    background: none;
-    border: none;
-    font: inherit;
+button {
+  background: none;
+  border: none;
+  font: inherit;
 }
 
-input   { width: 100%; }
+input { width: 100%; }
 
-button  { cursor: pointer; }
+button { cursor: pointer; }
 
-ion-icon    { pointer-events: none; }
+ion-icon { pointer-events: none; }
 
-address { font-style: normal;}
+address { font-style: normal; }
 
-html    {
-    font-family: var(--ff-poppins);
-    font-size: 10px;
-    scroll-behavior: smooth;
+html {
+  font-family: var(--ff-poppins);
+  font-size: 10px;
+  scroll-behavior: smooth;
 }
 
-body    {
-    background-color: var(--white);
-    color: var(--gray-web);
-    font-size: 1.75;
+body {
+  background-color: var(--white);
+  color: var(--gray-web);
+  font-size: 1.6rem;
+  line-height: 1.75;
 }
 
-:focus-visible  { outline-offset: 4px; }
+:focus-visible { outline-offset: 4px; }
 
 ::-webkit-scrollbar { width: 10px; }
 
-::-webkit-scrollbar-track   { background-color: hsl(0, 0%, 98%); }
+::-webkit-scrollbar-track { background-color: hsl(0, 0%, 98%); }
 
-::-webkit-scrollbar-thumb   { background-color: hsl(0, 0%, 80%); }
+::-webkit-scrollbar-thumb { background-color: hsl(0, 0%, 80%); }
 
 ::-webkit-scrollbar-thumb:hover { background-color: hsl(0, 0%, 70%); }
-
 
 
 
@@ -232,118 +232,122 @@ body    {
 
 .container { padding-inline: 15px;}
 
+.section { padding-block: var(--section-padding);}
+
+.shape {
+    position: absolute;
+    display: none;
+}
+
+.has-bg-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.h1,
+.h2,
+.h3 {
+    color: var(--eerie-black-1);
+    font-family: var(--ff-league_spartan);
+    line-height: 1;
+}
+
+.h1,
+.h2 { font-size: var(--fw-600);}
+
+.h1 { font-size: var(--fs-1); }
+
+.h2 { font-size: var(--fs-2); }
+
+.h3 { 
+    font-size: var(--fs-3);
+    font-weight: var(--fw-500);
+}
+
+    .section-title {
+        --color: var(--selective-purple);
+        text-align: center;
+    }
+
+.section-title .span {
+    display: inline-block;
+    color: var(--color);
+}
+
+.btn {
+    background-color: var(--selective-purple);
+    color: var(--selective-yellow);
+    font-family: var(--ff-league_spartan);
+    font-size: var(--fs-4);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    max-width: max-content;
+    padding: 10px 20px;
+    border-radius: var(--radius-5);
+    overflow: hidden;
+}
+
+.has-before,
+.has-after {
+    position: relative;
+    z-index: 1;
+}
+
+.has-before::before, 
+.has-after::after {
+    position: absolute;
+    content: "";
+}
+
+
+.btn::before {
+    inset: 0;
+    background-image: var(--gradient);
+    z-index: -1;
+    border-radius: inherit;
+    transform: translateX(-100%);
+    transition: var(--transition-2);
+}
+
+.btn:is(:hover, :focus)::before { transform: translateX(0); }
+
+.img-holder {
+    aspect-ratio: var(--width)/ var(--height);
+    background-color: var(--light-gray);
+    overflow: hidden;
+}
+
+.img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.section-subtitle {
+    font-size: var(--fs-5);
+    text-transform: uppercase;
+    font-weight: var(--fw-500);
+    letter-spacing: 1px;
+    text-align: center;
+    margin-block-end: 15px;
+}
 
+.section-text {
+    font-size: var(--fs-5);
+    text-align: center;
+    margin-block: 15px 25px;
+}
 
+.grid-list {
+    display: grid;
+}
 
+.category-card,
+.stats-card { background-color: hsla(var(--color), 0.1); }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+:is(.course, .blog) .section-title { margin-block-end: 40px; }
 
 
 
