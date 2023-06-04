@@ -422,7 +422,7 @@ body {
   #HERO
 \*-----------------------------------*/
 
-.hero { padding-block-start: calc(--section-padding) + 80px; }
+.hero { padding-block-start: calc(var(--section-padding) + 80px); }
 
 .hero .container {
     display: grid;
@@ -433,7 +433,7 @@ body {
     color: var(--eerie-black-1);
     font-size:  var(--fs-4);
     text-align: center;
-    margin-block:18px 20px;
+    margin-block: 18px 20px;
 }
 
 .hero .btn { margin-inline: auto;  }
@@ -441,7 +441,7 @@ body {
 .hero-banner {
     display: grid;
     grid-template-columns: 1fr 0.8fr;
-    align-self: start;
+    align-items: flex-start;
     gap: 30px;
 }
 
