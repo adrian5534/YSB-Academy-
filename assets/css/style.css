@@ -19,6 +19,7 @@
     /**
      * colors
      */
+    --selective-lightyellow: hsl(57, 87%, 85%);
     --selective-yellow: hsl(57, 87%, 63%);
     --selective-purple: hsl(278 58% 38%);
     --eerie-black-1: hsl(0, 0%, 9%);
@@ -579,7 +580,7 @@ body {
   #COURSE
 \*-----------------------------------*/
 
-.course { background-color: var(--isabelline); }
+.course { background-color: var(--selective-lightyellow); }
 
 .course-card {
   position: relative;
