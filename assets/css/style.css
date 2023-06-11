@@ -1381,8 +1381,8 @@ body {
   }
 
   .video-shape-2 {
-    top: -80px;
-    right: 120px;
+    bottom: -70px;
+    right: 30px;
     z-index: 1;
   }
 
