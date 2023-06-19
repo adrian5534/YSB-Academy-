@@ -87,6 +87,7 @@
   #RESET
 \*-----------------------------------*/
 
+
 ::selection {
     color: var(--gray-web);
     background-color: var(--white);
@@ -106,3 +107,20 @@ section { padding: 3rem  0 2rem; }
     width: 100%;
 }
 
+ .home {
+    width: 100%;
+    min-height: 440px;
+    background: url("/assets/images/blogimages/banner2.jpg");
+    display: grid;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .home-text {
+    color: var(--eerie-black-1);
+    text-align: center;
+ }
+
+ .home-title {
+    font-size: var;
+ }
