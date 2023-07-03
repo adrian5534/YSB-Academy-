@@ -866,6 +866,7 @@ body {
   background-color: var(--eerie-black-2);
   color: var(--gray-x-11);
   font-size: var(--fs-5);
+  margin-top: 10rem;
 }
 
 .footer-top {

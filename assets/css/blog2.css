@@ -1,6 +1,7 @@
 /*---------------------------------------------*\
 #CUSTOM PROPERTY
 \*----------------------------------------------*/
+@import "/assets/css/style.css";
 
 :root {
 
@@ -102,9 +103,10 @@
     box-sizing: border-box;
 }
 
-::selection {
-    color: var(--bg-color);
-    background-color: var(--second-color);
+html {
+    font-family: var(--ff-poppins);
+    font-size: 10px;
+    scroll-behavior: smooth;
 }
 
 li {  list-style: none;}
@@ -113,7 +115,13 @@ a { text-decoration: none; }
 
 img { width: 100%; }
 
-section { padding: 3rem 02; }
+section { padding: 3rem 0 2rem; }
+
+.containers {
+    max-width: 1068px;
+    margin: auto;
+    width: 100%;
+}
 
 .home {
     width: 100%;
@@ -130,11 +138,13 @@ section { padding: 3rem 02; }
 }
 
 .home-title {
-    font-size: 3.5rem;
+    font-size: var(--fs-1);
 }
+
 .home-subtitle {
-    font-size: 1rem;
+    font-size: var(--fs-4);
     font-weight: 400;
+    text-transform: uppercase;
 }
 
 /* Post Filter */
@@ -143,21 +153,21 @@ section { padding: 3rem 02; }
     display: flex;
     justify-content: center;
     align-items: center;
-    column-gap: 1.5rem;
+    column-gap: 1.2rem;
     margin-top: 2rem !important;
 }
 
 .filter-item {
-    font-size: 0.9rem;
+    font-size: 1.6rem;
     font-weight: var(--fw-500);
     cursor: pointer;
 }
 
 .active-filter {
-    background: var(--second-color);
-    color: var(--bg-color);
+    background: var(--selective-purple);
+    color: var(--selective-yellow);
     padding: 4px 10px;
-    border-radius: 4px;
+    border-radius: 25px;
 }
 
 /*Posts */
@@ -185,17 +195,19 @@ section { padding: 3rem 02; }
 }
 
 .category {
-    font-size: 0.9rem;
-    font-weight: var(--fw-500);
+    font-family: var(--ff-poppins);
+    font-size: 1rem;
+    font-weight: 500;
     text-transform: uppercase;
-    color: var(--second-color);
+    color: var(--selective-purple);
 }
 
 .post-title {
-    font-size: 1.3rem;
-    font-weight: var(--fw-600);
-    color: var(--text-color);
-
+    font-family: var(--ff-league_spartan);
+    font-size: var(--fs-3);
+    font-weight: 600;
+    color: var(--eerie-black-1);
+    line-height: 3.3rem;
     /* To Remain Title In 2 Lines */
 
     display: -webkit-box;
@@ -206,34 +218,35 @@ section { padding: 3rem 02; }
 
 .post-date {
     display: flex;
-    font-family: 0.875rem;
+    font-size: var(--fs-4);
     text-transform: uppercase;
-    font-weight: var(--fw-500);
+    font-weight: 400;
     margin-top: 4px;
 }
 
 .post-decription {
-    font-size: 0.9rem;
+    font-size: var(--fs-5);
     line-height: 1.5rem;
     margin: 5px 0 10px;
 
     /* To Remain Title In 3 Lines */
 
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
 .profile {
+    font-family: var(--ff-poppins);
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
 .profile-img {
-    width: 35px;
-    height: 35px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     object-fit: cover;
     object-position: center;
@@ -241,6 +254,180 @@ section { padding: 3rem 02; }
 }
 
 .profile-name {
-    font-size: 0.82rem;
+    font-size: var(--fs-6);
     font-weight: var(--fw-500);
+}
+
+/* Post Content */
+.post-header {
+    width: 100%;
+    height: 500px;
+    margin-top: 10rem !important;
+}
+
+.post-containers {
+    max-width: 800px;
+    margin: auto;
+    width: 100%;
+}
+
+.header-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4rem !important;
+}
+
+.back-home {
+    font-family: var(--ff-league_spartan);
+    color: var(--selective-purple);
+    font-size: var(--fs-5);
+    background-color: var(--platinum);
+    padding: 5px 10px;
+    border-radius: var(--radius-5);
+    margin-top: -35px;
+    margin-bottom: 1.5rem;
+    align-items: center;
+}
+
+.header-title {
+    width: 90%;
+    font-size: 2.6rem;
+    color: var(--selective-purple);
+
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.header-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.post-contents {
+    margin-top: 10rem !important;
+}
+
+.sub-heading {
+    font-size: var(--fs-3);
+    color: var(--eerie-black-2);
+}
+
+.post-text {
+    font-size: var(--fs-5);
+    line-height: 1.7rem;
+    margin: 1rem 0;
+    text-align: justify;
+}
+
+/* Share */
+
+.share {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1rem;
+}
+
+.share-title {
+    font-size: var(--fs-4);
+    color: var(--selective-purple);
+}
+.footer {
+    display: grid;
+    gap: 30px;
+}
+
+/* Responsive */ 
+
+@media (max-width: 1060px){
+    .containers { 
+    margin: 0 auto;
+    width: 95%;
+}
+.home-text {
+    width: 100%;
+}
+}
+
+@media (max-width: 800px){
+    .post-containers { 
+    margin: 0 auto;
+    width: 95%;
+}
+}
+
+@media (max-width: 768px){
+    section { 
+    padding: 2rem 0;
+}
+.header-contents {
+    margin-top: 3rem !important;
+}
+.home {
+    min-height: 380px;
+}
+.home-title {
+    font-size: 3rem;
+}
+.header-title {
+    font-size: 2rem;
+}
+.header-img {
+    height: 370px;
+}
+.post-header {
+    height: 435px;
+}
+.post-contents {
+    margin-top: 9rem !important;
+}
+}
+@media (max-width: 570px) {
+    .post-header {
+        height: 390px;
+    }
+    .header-title {
+        width: 100%;
+    }
+    .header-img {
+        height: 340px;
+    }
+}
+@media (max-width: 396px) {
+    .home-title {
+        font-size: var(--fs-3);
+    }
+    .home-subtitle {
+        font-size: var(--fs-6);
+    }
+    .home {
+        min-height: 360px;
+    }
+    .post-box {
+        padding: 10px;
+    }
+    .header-title {
+        font-size: 1.4rem;
+    }
+    .header-img {
+        height: 240px;
+    }
+    .post-header {
+        height: 335px;
+    }
+    .post-contents {
+        margin-top: 5rem !important;
+    }
+    .post-text {
+        font-size: var(--fs-5);
+        line-height: 1.75rem;
+        margin: 10px 0;
+    }
+    .filter-item {
+        font-size: 1rem;
+    }
+
 }
