@@ -258,6 +258,18 @@ section { padding: 3rem 0 2rem; }
     font-weight: var(--fw-500);
 }
 
+.socials {
+    display: flex;
+    gap: 25px;
+    font-size: 2rem;
+    color: var(--selective-purple);
+}
+
+.socials a:hover {
+    color: var(--selective-yellow);
+    transition: 0.3s all linear;
+}
+
 /* Post Content */
 .post-header {
     width: 100%;
@@ -320,6 +332,20 @@ section { padding: 3rem 0 2rem; }
     line-height: 1.7rem;
     margin: 1rem 0;
     text-align: justify;
+}
+
+/* blog list item */
+.blog-list {
+    display: block;
+    list-style-type: disc;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 40px;
+}
+#list-item {
+    list-style-type: disc;
 }
 
 /* Share */
