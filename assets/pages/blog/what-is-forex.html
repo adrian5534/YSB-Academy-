@@ -16,9 +16,11 @@
         <!--
             -custom css links
         -->
-        <link rel="stylesheet" href="/assets/css/style.css">
-        <!---->
-        <link rel="stylesheet" href="/assets/css/blog.css">
+        <link rel="stylesheet" href="/assets/css/blog2.css">
+        <!--
+          -Boxicon
+        -->
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
         <!--
             -google font link 
@@ -42,83 +44,145 @@
     </head>
 
 
-    <body id="top">
+    <body id="top blog">
 
 <!--
     - #HEADER
 -->
 <header class="header" data-header>
-    <div class="container">
+  <div class="container">
 
-        <a href="#" class="logo">
-            <img src="/assets/images/logo1.svg" width="162" height="50" alt="YSB Academy logo">
-        </a>
-        
-        <nav class="navbar" data-navbar>
-            
-                <div class="wrapper">
-                <a href="#" class="logo">
-                    <img src="/assets/images/logo.svg" width="162" height="50" alt="YSB Academy logo" >
-                </a>
+      <a href="/index.html" class="logo">
+          <img src="/assets/images/logo1.svg" width="162" height="50" alt="YSB Academy logo">
+      </a>
+      
+      <nav class="navbar" data-navbar>
+          
+              <div class="wrapper">
+              <a href="/index.html" class="logo">
+                  <img src="/assets/images/logo.svg" width="162" height="50" alt="YSB Academy logo" >
+              </a>
 
-                <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
-                    <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
-                </button>
-            </div>
+              <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+                  <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+              </button>
+          </div>
 
-            <ul class="navbar-list">
+          <ul class="navbar-list">
 
-                <li class="navbar-item">
-                    <a href="/index.html" class="navbar-link">Home</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="#about.html" class="navbar-link">About</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="/assets/pages/courses.html" class="navbar-link">Courses</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="/assets/pages/blog.html" class="navbar-link">Blog</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="/assets/pages/contact.html" class="navbar-link">Contact</a>
-                </li>
-            </ul>
-        </nav>
+              <li class="navbar-item">
+                  <a href="/index.html" class="navbar-link">Home</a>
+              </li>
+              <li class="navbar-item">
+                  <a href="/assets/pages/about.html" class="navbar-link">About</a>
+              </li>
+              <li class="navbar-item">
+                  <a href="/assets/pages/courses.html" class="navbar-link">Courses</a>
+              </li>
+              <li class="navbar-item">
+                  <a href="/assets/pages/blog.html" class="navbar-link">Blog</a>
+              </li>
+              <li class="navbar-item">
+                  <a href="/assets/pages/contact.html" class="navbar-link">Contact</a>
+              </li>
+          </ul>
+      </nav>
 
-        <div class="header-actions">
+      <div class="header-actions">
 
-            <button class="header-action-btn" aria-label="toggle search" title="Search">
-                <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
-            </button>
+          <button class="header-action-btn" aria-label="toggle search" title="Search">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+          </button>
 
-            <button class="header-action-btn" aria-label="cart" title="Cart">
-                <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+          <button class="header-action-btn" aria-label="cart" title="Cart">
+              <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
 
-                <span class="btn-badge">0</span>
-            </button>
-                <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
-                    <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
-                </button> 
-        </div>
+              <span class="btn-badge">0</span>
+          </button>
+              <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
+                  <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+              </button> 
+      </div>
 
-        <div class="overlay" data-nav-toggler data-overlay></div>
+      <div class="overlay" data-nav-toggler data-overlay></div>
 
-    </div>
+  </div>
 </header>
 
-    <main>
-        <article>
-            <section class="what is forex blog">
-                <div>
-                    <h1>What is Forex?</h1>
-                    <p>
-                        Forex is short for "foreign exchange" (sometimes abbreviated to just FX) and is the largest, most liquid market in the world with an average daily trading volume exceeding $5 trillion. 
-                    </p>
-                </div>
-            </section>
-        </article>
-    </main>
+<!--
+    - Post Content
+-->
+
+<section class="post-header">
+    <div class="header-contents post-containers">
+        <!--Back To Home-->
+        <a href="/assets/pages/blogcopy.html" class="back-home">Back To Blog</a>
+        <h1 class="header-title"></h1>
+        <!--Post Image-->
+        <img src="/assets/images/blog-1.jpg" alt="" class="header-img">
+    </div>
+</section>
+
+
+  <section class="post-contents post-containers">
+    <h2 class="sub-heading">What is Forex? A Beginner's Guide</h2>
+    <p class="post-text">In this blog post, we will explain the basics of Forex, also known as the foreign exchange market. Whether you are an aspiring trader or just curious about the concept, we will cover the fundamentals to help you understand this dynamic and global market.</p>
+    <h2 class="sub-heading">Introduction to Forex</h2>
+    <p class="post-text">Forex, or the foreign exchange market, is the largest financial market in the world. It involves the buying and selling of currencies from different countries. The primary goal of Forex trading is to profit from the fluctuations in exchange rates, which are influenced by various factors such as economic indicators, political events, and market sentiment.</p>
+    <h2 class="sub-heading">Key Players in Forex</h2>
+    <p class="post-text">There are several participants in the Forex market, including:</p>
+    
+    <div class="markdown">
+    <ol>
+      <li id="markdown"><strong>Banks and Financial Institutions:</strong> Commercial banks, central banks, and other financial institutions facilitate Forex transactions for their clients.</li>
+      <li id="markdown"><strong>Corporations:</strong> Multinational corporations engage in Forex to manage their foreign exchange risk and facilitate cross-border transactions.</li>
+      <li id="markdown"><strong>Investors:</strong> Individual investors, such as hedge funds and retail traders, participate in Forex trading to speculate on currency price movements.</li>
+      <li id="markdown"><strong>Governments:</strong> Central banks play a vital role in Forex markets by implementing monetary policies and intervening to stabilize their domestic currency.</li>
+    </ol>
+  </div>
+  <h2 class="sub-heading">How Forex Trading Works</h2>
+  <p class="post-text">Forex trading is done in currency pairs. When you trade Forex, you are simultaneously buying one currency and selling another. The most actively traded currency pairs are known as major pairs, such as EUR/USD (Euro/US Dollar) and GBP/USD (British Pound/US Dollar).</p>
+  <p class="post-text">Forex trading is conducted over-the-counter (OTC), which means there is no central exchange. Instead, trading occurs electronically via computer networks between traders around the world. The market is open 24 hours a day, 5 days a week, allowing for continuous trading across different time zones.</p>
+  <h2 class="sub-heading">Factors Affecting Forex Prices</h2>
+  <p class="post-text">Various factors impact the value of currencies in the Forex market. Some essential elements to consider include:</p>
+
+  <div class="blog-list">
+    <ul>
+      <li id="list-item"><strong>Economic Indicators:</strong> Reports on economic data, like gross domestic product (GDP), inflation, employment figures, and interest rates, can significantly impact currency prices.</li>
+      <li id="list-item"><strong>Political Events and Geopolitical Tensions:</strong> Political stability, elections, trade wars, and conflicts can affect a country's currency value.</li>
+      <li id="list-item"><strong>Market Sentiment:</strong> Market participants' perception of risk, economic outlook, and investor sentiment can influence currency prices.</li>
+      <li id="list-item"><strong>Interest Rates:</strong> Divergence or convergence in interest rates between countries can impact the flow of investments and currency values.</li>
+    </ul>
+  </div>
+
+  <h2 class="sub-heading">Basic Forex Terminology</h2>
+  <p class="post-text">To navigate the Forex market, it's important to understand some key terms:</p>
+  <div class="blog-list">
+    <ul>
+      <li id="list-item"><strong>Pip:</strong> A pip represents the smallest unit of price movement for currency pairs. It is usually the fourth decimal place in major currency pairs.</li>
+      <li id="list-item"><strong>Leverage:</strong> Forex trading often involves trading on margin, which means borrowing money to control larger positions. Leverage amplifies both potential gains and losses.</li>
+      <li id="list-item"><strong>Spread:</strong>The difference between the bid and ask prices is known as the spread, which represents the cost of trading. It is usually measured in pips.</li>
+      <li id="list-item"><strong>Lot:</strong> A lot refers to the standardized quantity of a currency pair that is traded.</li>
+    </ul>
+  </div>
+
+  <h2 class="sub-heading">Closing Thoughts</h2>
+  <p class="post-text">Forex trading offers exciting opportunities to profit from the fluctuations in currency prices. However, it's crucial to remember that trading Forex involves risk and requires knowledge, skill, and careful decision-making. Before engaging in Forex trading, it is advisable to educate yourself, practice on demo accounts, and seek professional guidance.</p>
+
+  <p class="post-text">We hope this beginner's guide has provided you with a better understanding of what Forex is and how it works. Stay tuned for more informative articles on trading strategies, risk management, and market analysis. Happy trading!</p>
+  </section>
+
+  <!-- Share -->
+
+  <div class="share post-containers">
+    <span class="share-title">Share this article</span>
+    <div class="socials">
+        <a href="#"><ion-icon name="logo-facebook"></ion-icon></i></a>
+        <a href="#"><ion-icon name="logo-twitter"></ion-icon></i></a>
+        <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-linkedin"></i></a>
+    </div>
+  </div>
 <!-- 
     - #FOOTER
   -->
@@ -295,17 +359,26 @@
     <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
   </a>
 
+  <!--
+    - JQuery Link
+  -->
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
 <!--
     - custom js link 
 -->
+<script src="/assets/js/blog2.js"></script>
 <script src="/assets/js/script.js" defer></script>
+
 
 <!--
     - ionicon link
 -->
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+</body>
 </html>
