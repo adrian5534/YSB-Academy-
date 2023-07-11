@@ -16,9 +16,12 @@
         <!--
             -custom css links
         -->
+        <link rel="stylesheet" href="/assets/css/blog2.css">
         <link rel="stylesheet" href="/assets/css/style.css">
-        <!---->
-        <link rel="stylesheet" href="/assets/css/blog.css">
+        <!--
+          -Boxicon
+        -->
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
         <!--
             -google font link 
@@ -48,197 +51,326 @@
     - #HEADER
 -->
 <header class="header" data-header>
-    <div class="container">
+  <div class="container">
 
-        <a href="#" class="logo">
-            <img src="/assets/images/logo1.svg" width="162" height="50" alt="YSB Academy logo">
-        </a>
-        
-        <nav class="navbar" data-navbar>
-            
-                <div class="wrapper">
-                <a href="#" class="logo">
-                    <img src="/assets/images/logo.svg" width="162" height="50" alt="YSB Academy logo" >
-                </a>
+      <a href="/index.html" class="logo">
+          <img src="/assets/images/logo1.svg" width="162" height="50" alt="YSB Academy logo">
+      </a>
+      
+      <nav class="navbar" data-navbar>
+          
+              <div class="wrapper">
+              <a href="/index.html" class="logo">
+                  <img src="/assets/images/logo.svg" width="162" height="50" alt="YSB Academy logo" >
+              </a>
 
-                <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
-                    <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
-                </button>
-            </div>
+              <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+                  <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+              </button>
+          </div>
 
-            <ul class="navbar-list">
+          <ul class="navbar-list">
 
-                <li class="navbar-item">
-                    <a href="/index.html" class="navbar-link">Home</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="#about.html" class="navbar-link">About</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="/assets/pages/courses.html" class="navbar-link">Courses</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="/assets/pages/blog.html" class="navbar-link">Blog</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="/assets/pages/contact.html" class="navbar-link">Contact</a>
-                </li>
-            </ul>
-        </nav>
+              <li class="navbar-item">
+                  <a href="/index.html" class="navbar-link">Home</a>
+              </li>
+              <li class="navbar-item">
+                  <a href="/assets/pages/about.html" class="navbar-link">About</a>
+              </li>
+              <li class="navbar-item">
+                  <a href="/assets/pages/courses.html" class="navbar-link">Courses</a>
+              </li>
+              <li class="navbar-item">
+                  <a href="/assets/pages/blog.html" class="navbar-link">Blog</a>
+              </li>
+              <li class="navbar-item">
+                  <a href="/assets/pages/contact.html" class="navbar-link">Contact</a>
+              </li>
+          </ul>
+      </nav>
 
-        <div class="header-actions">
+      <div class="header-actions">
 
-            <button class="header-action-btn" aria-label="toggle search" title="Search">
-                <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
-            </button>
+          <button class="header-action-btn" aria-label="toggle search" title="Search">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+          </button>
 
-            <button class="header-action-btn" aria-label="cart" title="Cart">
-                <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+          <button class="header-action-btn" aria-label="cart" title="Cart">
+              <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
 
-                <span class="btn-badge">0</span>
-            </button>
-                <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
-                    <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
-                </button> 
-        </div>
+              <span class="btn-badge">0</span>
+          </button>
+              <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
+                  <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+              </button> 
+      </div>
 
-        <div class="overlay" data-nav-toggler data-overlay></div>
+      <div class="overlay" data-nav-toggler data-overlay></div>
 
-    </div>
+  </div>
 </header>
 
-    <main>
-        <article>
+<section class="home" id="home">
+    <div class="home-text containers">
+          <h2 class="home-title">YSB Academy Blog</h2>
+          <span class="home-subtitle">Level up your trading skills with our free resources</span>
+    </div>
+</section>
 
-          <section class="home" id="home">
-            <div class="home-text container">
-              <h2 class="home-title">YSB Academy Blog</h2>
-              <span class="home-subtitle">Your source of great forex content</span>
-            </div>
-          </section>
+<!-- 
+    - #Post Filter
+  -->
 
+  <div class="post-filter containers">
+    <span class="filter-item active-filter" data-filter='all'>All</span>
+    <span class="filter-item" data-filter='investment'>Investment</span>
+    <span class="filter-item" data-filter='psychology'>Psychology</span>
+    <span class="filter-item" data-filter='technical'>Technical</span>
+    
+  </div>
 
-          <section class="about container" id="about">
-            <div class="contentBx">
-              <h2 class="titleText">Catch up with the trading topics</h2>
-              <p class="title-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida nibh quis nisi blandit finibus. Nulla vestibulum tristique sapien. Etiam ut neque finibus, malesuada eros at, rhoncus quam. Praesent venenatis vehicula leo, et sodales nulla dignissim nec. Quisque consequat diam vitae bibendum interdum. Donec tempor, urna nec malesuada interdum, velit orci dapibus est, eget iaculis velit magna id ipsum. Proin ac mauris sit amet massa facilisis tempor. 
-                <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. sed blanditiis libero.
-              </p>
-              <a href="#" class="btn2">Read more</a>
-            </div>
-            <div class="imgBx">
-              <img src="/assets/images/about-banner.svg" alt="about" class="fitBg">
-            </div>
-          </section>
+  <!--
+    -Posts
+  -->
 
-          <div class="post-filter container">
-            <span class="filter-item active-filter" data-filter="all">All</span>
-            <span class="filter-item" data-filter="tech">Tech</span>
-            <span class="filter-item" data-filter="food">Food</span>
-            <span class="filter-item" data-filter="news">News</span>
-          </div>
+  <section class="post containers">
 
-          <div class="post container">
-            <!--
-              -Post 1
+    <!--
+      _Post Box 1
+    -->
+
+    <div class="post-box investment">
+        <img src="/assets/images/blog-1.jpg" alt="" class="post-img">
+        <h2 class="category">Investment</h2>
+        <a href="/assets/pages/blog/what-is-forex.html" class="post-title">
+
+        What is Forex? A Beginner's Guide
+        </a>
+        <span class="post-date" id="date-god">Jun 27 2023</span>
+        <p class="post-decription">
+          In this blog post, we will explain the basics of Forex, also known as the foreign exchange market. Whether you are an aspiring trader or just curious about the concept, we will cover the fundamentals to help you understand this dynamic and global market.
+        </p>
+
+        <!--
+          -Profile 1
+        -->
+
+        <div class="profile">
+          <img src="/assets/images/logo.svg" alt="" class="profile-img">
+          <span class="profile-name">YSB Academy</span>
+        </div>
+    </div>
+
+    <!--
+      _Post Box 2
+    -->
+
+    <div class="post-box investment">
+        <img src="/assets/images/blog-2.jpg" alt="" class="post-img">
+        <h2 class="category">Investment</h2>
+        <a href="/assets/pages/blog/how-to-spot-a-forex-scam.html" class="post-title">
+
+          How to Spot Forex Scams: Protecting Your Investments
+        </a>
+        <span class="post-date" id="date-god">Jun 27 2023</span>
+        <p class="post-decription">
+          In the world of foreign exchange (forex) trading, it's essential to be wary of potential scams. The forex market is highly lucrative, attracting both legitimate traders and unscrupulous individuals looking to take advantage of inexperienced investors.</p>
+
+        <!--
+          -Profile 2
+        -->
+
+        <div class="profile">
+          <img src="/assets/images/logo.svg" alt="" class="profile-img">
+          <span class="profile-name">YSB Academy</span>
+        </div>
+    </div>
+
+    <!--
+      _Post Box 3
+    -->
+
+    <div class="post-box psychology">
+        <img src="/assets/images/blog-3.jpg" alt="" class="post-img">
+        <h2 class="category">Psychology</h2>
+        <a href="/assets/pages/blog/Understanding-trading-psychology.html" class="post-title">
+
+        Understanding Trading Psychology: What it is and Why it Matters
+
+        </a>
+        <span class="post-date">Jun 28 2023</span>
+        <p class="post-decription">
+          Trading psychology is an often overlooked aspect of trading that could be the difference between success and failure. Trading psychology involves understanding and managing the emotional and mental aspects of trading. This includes a trader's mindset, discipline, and emotions.
+       </p>
+
+        <!--
+          -Profile 3
+        -->
+
+        <div class="profile">
+          <img src="/assets/images/logo.svg" alt="" class="profile-img">
+          <span class="profile-name">YSB Academy</span>
+        </div>
+    </div>
+
+    <!--
+      _Post Box 4
+    
+
+    <div class="post-box technical">
+        <img src="/assets/images/blog-1.jpg" alt="" class="post-img">
+        <h2 class="category">Technical</h2>
+        <a href="/assets/pages/blog/post-page.html" class="post-title">
+
+        How to Create  UX Design With Adobe XD
+        </a>
+        <span class="post-date">Jun 20 2023</span>
+        <p class="post-decription">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida nibh quis nisi blandit finibus. Nulla vestibulum tristique sapien.
+        </p>
             -->
-            <div class="post-box tech">
-              <img src="/assets/images/blog-1.jpg" alt="blog1" class="post-img">
-              <h2 class="category">Tech</h2>
-              <a href="#" class="post-title">How to create the best UI with Figma</a>
-              <span class="post-date">Jun 18 2023</span>
-              <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida nibh quis nisi blandit finibus. Nulla vestibulum tristique sapien. Etiam ut neque finibus, malesuada eros at, rhoncus quam. Praesent venenatis vehicula leo, et sodales nulla dignissim nec. Quisque consequat diam vitae bibendum interdum. Donec tempor, urna nec malesuada interdum, velit orci dapibus est, eget iaculis velit magna id ipsum. Proin ac mauris sit amet massa facilisis tempor.
+        <!--
+          -Profile 4
+      
 
-              </p>
-              <div class="profile">
-                <img src="/assets/images/course-2.svg" alt="" class="profile-img">
-                <span class="profile-name">YSB</span>
-              </div>
-            </div>
+        <div class="profile">
+          <img src="/assets/images/course-1.jpg" alt="" class="profile-img">
+          <span class="profile-name">John Doe</span>
+        </div>
+    </div>
+  -->
+    <!--
+      _Post Box 5
+   
 
-             <!--
-              -Post 2
-            -->
-             <div class="post-box food">
-              <img src="/assets/images/course-22.jpg" alt="blog1" class="post-img">
-              <h2 class="category">Food</h2>
-              <a href="#" class="post-title">How to create the best UI with Figma</a>
-              <span class="post-date">Jun 18 2023</span>
-              <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida nibh quis nisi blandit finibus. Nulla vestibulum tristique sapien. Etiam ut neque finibus, malesuada eros at, rhoncus quam. Praesent venenatis vehicula leo, et sodales nulla dignissim nec. Quisque consequat diam vitae bibendum interdum. Donec tempor, urna nec malesuada interdum, velit orci dapibus est, eget iaculis velit magna id ipsum. Proin ac mauris sit amet massa facilisis tempor.
+    <div class="post-box tech">
+        <img src="/assets/images/blog-2.jpg" alt="" class="post-img">
+        <h2 class="category">Investment</h2>
+        <a href="/assets/pages/blog/post-page.html" class="post-title">
 
-              </p>
-              <div class="profile">
-                <img src="/assets/images/course-2.svg" alt="" class="profile-img">
-                <span class="profile-name">YSB</span>
-              </div>
-            </div> 
-            
-            <!--
-              -Post 3
-            -->
-            <div class="post-box food">
-              <img src="/assets/images/course-1.jpg" alt="blog1" class="post-img">
-              <h2 class="category">Food</h2>
-              <a href="#" class="post-title">How to create the best UI with Figma</a>
-              <span class="post-date">Jun 18 2023</span>
-              <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida nibh quis nisi blandit finibus. Nulla vestibulum tristique sapien. Etiam ut neque finibus, malesuada eros at, rhoncus quam. Praesent venenatis vehicula leo, et sodales nulla dignissim nec. Quisque consequat diam vitae bibendum interdum. Donec tempor, urna nec malesuada interdum, velit orci dapibus est, eget iaculis velit magna id ipsum. Proin ac mauris sit amet massa facilisis tempor.
+        How to Create Best UX Design With Adobe XD
+        </a>
+        <span class="post-date">Jun 20 2023</span>
+        <p class="post-decription">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida nibh quis nisi blandit finibus. Nulla vestibulum tristique sapien.
+        </p>
 
-              </p>
-              <div class="profile">
-                <img src="/assets/images/course-2.svg" alt="" class="profile-img">
-                <span class="profile-name">YSB</span>
-              </div>
-            </div> 
-            
-            <!--
-              -Post 4
-            -->
-            <div class="post-box news">
-              <img src="/assets/images/blog-3.jpg" alt="blog1" class="post-img">
-              <h2 class="category">News</h2>
-              <a href="#" class="post-title">How to create the best UI with Figma</a>
-              <span class="post-date">Jun 18 2023</span>
-              <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida nibh quis nisi blandit finibus. Nulla vestibulum tristique sapien. Etiam ut neque finibus, malesuada eros at, rhoncus quam. Praesent venenatis vehicula leo, et sodales nulla dignissim nec. Quisque consequat diam vitae bibendum interdum. Donec tempor, urna nec malesuada interdum, velit orci dapibus est, eget iaculis velit magna id ipsum. Proin ac mauris sit amet massa facilisis tempor.
+        
+          -Profile 5
+        
 
-              </p>
-              <div class="profile">
-                <img src="/assets/images/course-2.svg" alt="" class="profile-img">
-                <span class="profile-name">YSB</span>
-              </div>
-            </div> 
-            
-            <!--
-              -Post 5
-            -->
-            <div class="post-box tech">
-              <img src="/assets/images/blog-2.jpg" alt="blog1" class="post-img">
-              <h2 class="category">Tech</h2>
-              <a href="#" class="post-title">How to create the best UI with Figma</a>
-              <span class="post-date">Jun 18 2023</span>
-              <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida nibh quis nisi blandit finibus. Nulla vestibulum tristique sapien. Etiam ut neque finibus, malesuada eros at, rhoncus quam. Praesent venenatis vehicula leo, et sodales nulla dignissim nec. Quisque consequat diam vitae bibendum interdum. Donec tempor, urna nec malesuada interdum, velit orci dapibus est, eget iaculis velit magna id ipsum. Proin ac mauris sit amet massa facilisis tempor.
-                
-              </p>
-              <div class="profile">
-                <img src="/assets/images/course-2.svg" alt="" class="profile-img">
-                <span class="profile-name">YSB</span>
-              </div>
-            </div>
-          </div>
-          
+        <div class="profile">
+          <img src="/assets/images/course-22.jpg" alt="" class="profile-img">
+          <span class="profile-name">John Brown</span>
+        </div>
+    </div>
+ -->
+    <!--
+      _Post Box 6
+    
 
+    <div class="post-box mobile">
+        <img src="/assets/images/blog-3.jpg" alt="" class="post-img">
+        <h2 class="category">Psychology</h2>
+        <a href="/assets/pages/blog/post-page.html" class="post-title">
 
+        How to Create Best UX Design With Adobe XD
+        </a>
+        <span class="post-date">Jun 20 2023</span>
+        <p class="post-decription">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida nibh quis nisi blandit finibus. Nulla vestibulum tristique sapien.
+        </p>
 
-            <section class="what is forex blog">
-                <div>
-                    <h1>What is Forex?</h1>
-                    <p>
-                        Forex is short for "foreign exchange" (sometimes abbreviated to just FX) and is the largest, most liquid market in the world with an average daily trading volume exceeding $5 trillion. 
-                    </p>
-                </div>
-            </section>
-        </article>
-    </main>
+        
+          -Profile 6
+        
+
+        <div class="profile">
+          <img src="/assets/images/course-3.png" alt="" class="profile-img">
+          <span class="profile-name">Jim Brown</span>
+        </div>
+    </div>
+
+    
+      _Post Box 7
+    
+
+    <div class="post-box design">
+        <img src="/assets/images/blog-1.jpg" alt="" class="post-img">
+        <h2 class="category">Technical</h2>
+        <a href="/assets/pages/blog/post-page.html" class="post-title">
+
+        How to Create  UX Design With Adobe XD
+        </a>
+        <span class="post-date">Jun 20 2023</span>
+        <p class="post-decription">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida nibh quis nisi blandit finibus. Nulla vestibulum tristique sapien.
+        </p>
+
+        
+          -Profile 7
+        
+
+        <div class="profile">
+          <img src="/assets/images/course-1.jpg" alt="" class="profile-img">
+          <span class="profile-name">John Doe</span>
+        </div>
+    </div>
+
+    
+      _Post Box 8
+    
+
+    <div class="post-box tech">
+        <img src="/assets/images/blog-2.jpg" alt="" class="post-img">
+        <h2 class="category">Investment</h2>
+        <a href="/assets/pages/blog/post-page.html" class="post-title">
+
+        How to Create Best UX Design With Adobe XD
+        </a>
+        <span class="post-date">Jun 20 2023</span>
+        <p class="post-decription">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida nibh quis nisi blandit finibus. Nulla vestibulum tristique sapien.
+        </p>
+
+        
+          -Profile 8
+        
+
+        <div class="profile">
+          <img src="/assets/images/course-22.jpg" alt="" class="profile-img">
+          <span class="profile-name">John Brown</span>
+        </div>
+    </div>
+
+    
+      _Post Box 9
+    
+
+    <div class="post-box design">
+        <img src="/assets/images/blog-3.jpg" alt="" class="post-img">
+        <h2 class="category">Psychology</h2>
+        <a href="/assets/pages/blog/post-page.html" class="post-title">
+
+        How to Create Best UX Design With Adobe XD
+        </a>
+        <span class="post-date">Jun 20 2023</span>
+        <p class="post-decription">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida nibh quis nisi blandit finibus. Nulla vestibulum tristique sapien.
+        </p>
+
+        
+          -Profile 9
+        
+
+        <div class="profile">
+          <img src="/assets/images/course-3.png" alt="" class="profile-img">
+          <span class="profile-name">Jim Brown</span>
+        </div>
+    </div> 
+     -->
+  </section>
+
 <!-- 
     - #FOOTER
   -->
@@ -250,7 +382,7 @@
 
         <div class="footer-brand">
 
-          <a href="#" class="logo">
+          <a href="#" class="logo bloglo">
             <img src="/assets/images/logo-light.svg" width="162" height="50" alt="EduWeb logo">
           </a>
 
@@ -415,9 +547,15 @@
     <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
   </a>
 
+  <!--
+    - JQuery Link
+  -->
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
 <!--
     - custom js link 
 -->
+<script src="/assets/js/blog2.js"></script>
 <script src="/assets/js/script.js" defer></script>
 
 
@@ -430,8 +568,5 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script src="/assets/js/blog.js"></script>
-
 </body>
-
 </html>

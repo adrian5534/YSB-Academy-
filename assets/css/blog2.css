@@ -226,9 +226,9 @@ section { padding: 3rem 0 2rem; }
 
 .post-decription {
     font-size: var(--fs-5);
-    line-height: 1.5rem;
+    line-height: 2rem;
     margin: 5px 0 10px;
-
+    padding: 0.1em;
     /* To Remain Title In 3 Lines */
 
     display: -webkit-box;
