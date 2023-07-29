@@ -1,38 +1,11 @@
 // Define an array to store the cart items
 let cartItems = [];
 
-// Add to Cart
-function addToCart(event) {
-    const button = event.target;
-    const productBox = button.closest('.product-box');
-  
-    if (productBox) {
-      const titleElement = productBox.querySelector('.product-title');
-      const priceElement = productBox.querySelector('.price');
-  
-      if (titleElement && priceElement) {
-        const title = titleElement.textContent;
-        const price = priceElement.textContent;
-        const item = {
-          title: title,
-          price: price
-        };
-  
-        cartItems.push(item);
-        updateCartCount();
-      } else {
-        console.log("Error: Title or price element not found!");
-      }
-    } else {
-      console.log("Error: Product box not found!");
-    }
-  }
-
 // Update Cart Count
 function updateCartCount() {
-    const cartCount = document.querySelector('#cart-count');
-    cartCount.textContent = cartItems.length;
-  }
+  const cartCount = document.querySelector('#cart-count');
+  cartCount.textContent = cartItems.length;
+}
 
 // Toggle Search
 function toggleSearch() {
@@ -42,20 +15,20 @@ function toggleSearch() {
 
 // Toggle Cart
 function toggleCart() {
-    const cartOverlay = document.querySelector('.cart-overlay');
-    cartOverlay.classList.toggle('active');
+  const cartItemsContainer = document.querySelector('#cart-items');
+  cartItemsContainer.classList.toggle('active');
 
-    const shopContent = document.querySelector('.shop-content');
-    shopContent.classList.toggle('active');
+  const shopContent = document.querySelector('.shop-content');
+  shopContent.classList.toggle('active');
 
-    const cartItems = document.querySelector('.cart-items');
-    if (cartOverlay.classList.contains('active')) {
-      displayCartItems();
-      cartItems.classList.add('show');
-    } else {
-      cartItems.classList.remove('show');
-    }
+  const cartItemsContent = document.getElementById('cart-items');
+  if (cartItemsContainer.classList.contains('active')) {
+    displayCartItems(cartItemsContent);
+    cartItemsContent.classList.add('show');
+  } else {
+    cartItemsContent.classList.remove('show');
   }
+}
 
 // Event Listener - Add to Cart
 const cartBtns = document.querySelectorAll('.add-cart');
@@ -72,35 +45,85 @@ const cartIcon = document.querySelector('[aria-label="cart"]');
 cartIcon.addEventListener('click', toggleCart);
 
 // Display Cart Items
-function displayCartItems() {
-  const cartItemsContainer = document.querySelector('.cart-items');
-  cartItemsContainer.innerHTML = '';
+function displayCartItems(cartitems) {
+    const container = document.getElementById("cart-items");
+    if (container) {
+      container.innerHTML = "";
+  
+      cartItems.forEach((item) => {
+        const cartItemElement = document.createElement('div');
+        cartItemElement.classList.add('cart-item');
+  
+        const imgElement = document.createElement('img');
+        imgElement.src = item.imageSrc;
+  
+        const titleElement = document.createElement('span');
+        titleElement.textContent = item.title;
+  
+        const priceElement = document.createElement('span');
+        priceElement.textContent = item.price;
+  
+        cartItemElement.appendChild(imgElement);
+        cartItemElement.appendChild(titleElement);
+        cartItemElement.appendChild(priceElement);
+  
+        container.appendChild(cartItemElement);
+      });
+    } else {
+      console.error(`Container element with ID '${containerId}' not found.`);
+    }
+  }
 
-  cartItems.forEach((item) => {
-    const cartItemElement = document.createElement('div');
-    cartItemElement.classList.add('cart-item');
+// Function to add item to cart
+function addToCart(event) {
+  const button = event.target;
+  const productBox = button.closest('.product-box');
 
-    const titleElement = document.createElement('span');
-    titleElement.textContent = item.title;
+  if (productBox) {
+    const imgElement = productBox.querySelector('.product-img');
+    const titleElement = productBox.querySelector('.product-title');
+    const priceElement = productBox.querySelector('.price');
 
-    const priceElement = document.createElement('span');
-    priceElement.textContent = item.price;
+    if (imgElement && titleElement && priceElement) {
+      const imageSrc = imgElement.src;
+      const title = titleElement.textContent;
+      const price = priceElement.textContent;
 
-    cartItemElement.appendChild(titleElement);
-    cartItemElement.appendChild(priceElement);
+      const item = {
+        imageSrc: imageSrc,
+        title: title,
+        price: price
+      };
 
-    cartItemsContainer.appendChild(cartItemElement);
-  });
+      cartItems.push(item);
+      updateCartCount();
+    } else {
+      console.log("Error: Image, Title, or Price element not found!");
+    }
+  } else {
+    console.log("Error: Product box not found!");
+  }
 }
 
-// Get the cart icon element
-const cartIconElement = document.getElementById('cart-icon');
-
-// Get the shop content container
-const shopContent = document.querySelector('.shop-content');
-
-// Add click event listener to cart icon
-cartIconElement.addEventListener('click', () => {
-  // Toggle the visibility of shop content
-  shopContent.classList.toggle('active');
-});
+// Toggle Cart Overlay
+function toggleCartOverlay() {
+    const cartOverlay = document.querySelector('.cart-overlay');
+    const cartContent = document.querySelector('.cart-content');
+    const shopContent = document.querySelector('#shop .shop-content');
+  
+    if (cartOverlay && cartContent && shopContent) {
+        cartOverlay.classList.toggle('show');
+        cartContent.innerHTML = '';
+  
+      // Check if cartItems is not empty
+      if (cartItems.length !== 0) {
+        displayCartItems('cart-items');
+      }
+         // Toggle shop content opacity
+    shopContent.classList.toggle('active');
+}else {
+      console.error('Error: Cart Overlay or Cart Content not found.');
+    }
+  }
+// Event Listener - Toggle Cart Overlay
+cartIcon.addEventListener('click', () => toggleCartOverlay());
