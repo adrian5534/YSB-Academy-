@@ -1,0 +1,19 @@
+.replay-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .replay-button {
+    margin-right: 10px;
+  }
+  
+  .time-range {
+    flex: 1;
+  }
+  
+  .current-time {
+    margin-left: 10px;
+  }

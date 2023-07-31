@@ -89,11 +89,12 @@
           <button class="header-action-btn" aria-label="toggle search" title="Search">
             <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
           </button>
-        
+
           <button class="header-action-btn" id="cart-icon" aria-label="cart" title="Cart">
             <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-            <span id="cart-count" class="btn-badge">0</span>
-          </button>
+
+            <span class="btn-badge">0</span>
+        </button>
         
           <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
             <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
@@ -105,57 +106,118 @@
         </div>
         </div>
         </header>
-        
-        <div id="cart-items">
-          <!-- Content to display after the cart is clicked -->
-          <div class="shop-content">
-            <ul>
-              <!-- Cart items will be dynamically added here -->
-            </ul>
-            <button class="checkout-button">Checkout</button>
-          </div>
-        </div>
-        <main id="shop">
-        <div class="shop container" id="secpad">
-          <h2 class="section-title">Shop products</h2>
-          <!-- Content -->
-          <div class="shop-content">
-            <!-- Box 1 -->
-            <div class="product-box">
-              <img class="product-img" src="/assets/images/course-1.svg" alt="">
+        <main>
+          <ul id="cd-gallery-items" class="cd-container">
+          
+            <!--Box 1-->
+            <li><div class="product" id="123">
+              <img  src="/assets/images/course-1.svg" alt="Preview image">
+              <h2  class="product-title">Forex Beginner Course 1</h2>
+              <span  class="price">$50</span>
+              <i class='bx bx-shopping-bag add-cart'> Add to Cart </i>
+              </div>
+            </li>
+      
+            <!--Box 1-->
+            <li><div class="product" id="1234">
+              <img  src="/assets/images/course-1.svg" alt="Preview image">
+              <h2  class="product-title">Forex Beginner Course 2</h2>
+              <span  class="price">$50</span>
+              <i class='bx bx-shopping-bag add-cart'> Add to Cart </i>
+              </div>
+            </li>
+            <!--Box 1-->
+            <li><div class="product" id="pd-items">
+              <img  src="/assets/images/course-1.svg" alt="Preview image">
+              <h2  class="product-title">Forex Beginner Course</h2>
+              <span  class="price">$50</span>
+              <i class='bx bx-shopping-bag add-cart'> Add to Cart </i>
+              </div>
+            </li>
+            <!--Box 1-->
+            <li><div class="product" id="pd-items">
+              <img  src="/assets/images/course-1.svg" alt="Preview image">
+              <h2  class="product-title">Forex Beginner Course</h2>
+              <span  class="price">$50</span>
+              <i class='bx bx-shopping-bag add-cart'> Add to Cart </i>
+              </div>
+            </li>
+            <!--Box 1-->
+            <li><div class="product" id="pd-items">
+              <img  src="/assets/images/course-1.svg" alt="Preview image">
+              <h2  class="product-title">Forex Beginner Course</h2>
+              <span  class="price">$50</span>
+              <i class='bx bx-shopping-bag add-cart'> Add to Cart </i>
+              </div>
+            </li>
+            <!--Box 1-->
+            <li><div class="product" id="pd-items">
+              <img  src="/assets/images/course-1.svg" alt="Preview image">
+              <h2  class="product-title">Forex Beginner Course</h2>
+              <span  class="price">$50</span>
+              <i class='bx bx-shopping-bag add-cart'> Add to Cart </i>
+              </div>
+            </li>
+            </li>
+            <!--Box 1-->
+            <li><div class="product" id="pd-items">
+              <img  src="/assets/images/course-1.svg" alt="Preview image">
+              <h2  class="product-title">Forex Beginner Course</h2>
+              <span  class="price">$50</span>
+              <i class='bx bx-shopping-bag add-cart'> Add to Cart </i>
+              </div>
+            </li>
+            <!--Box 1-->
+            <li><div class="product" id="pd-items">
+              <img  src="/assets/images/course-1.svg" alt="Preview image">
+              <h2  class="product-title">Forex Beginner Course</h2>
+              <span  class="price">$50</span>
+              <i class='bx bx-shopping-bag add-cart'> Add to Cart </i>
+              </div>
+            </li>
+            <!--Box 1-->
+            <li><div class="product" id="pd-items">
+              <img  src="/assets/images/course-1.svg" alt="Preview image">
               <h2 class="product-title">Forex Beginner Course</h2>
-              <span class="price">$50</span>
-              <i class='bx bx-shopping-bag add-cart'></i><span>Add to Cart</span>
-            </div>
-            <!-- Box 2 -->
-            <div class="product-box">
-              <img class="product-img" src="/assets/images/course-1.svg" alt="">
-              <h2 class="product-title">Forex Beginner Course</h2>
-              <span class="price">$50</span>
-              <i class='bx bx-shopping-bag add-cart'></i><span>Add to Cart</span>
-            </div>
-            <!-- Box 3 -->
-            <div class="product-box">
-              <img class="product-img" src="/assets/images/course-1.svg" alt="">
-              <h2 class="product-title">Forex Beginner Course</h2>
-              <span class="price">$50</span>
-              <i class='bx bx-shopping-bag add-cart'></i><span>Add to Cart</span>
-            </div>
-            <!-- Box 4 -->
-            <div class="product-box">
-              <img class="product-img" src="/assets/images/course-1.svg" alt="">
-              <h2 class="product-title">Forex Beginner Course</h2>
-              <span class="price">$50</span>
-              <i class='bx bx-shopping-bag add-cart'></i><span>Add to Cart</span>
-            </div>
-          </div>
-        </div>
-      </main>
-        <div class="cart-overlay">
-          <div class="cart-content">
-            <!-- Content of the cart overlay -->
-          </div>
-        </div>
+              <span  class="price">$50</span>
+              <i  class='bx bx-shopping-bag add-cart'> Add to Cart </i>
+              </div>
+            </li>
+          </ul> <!-- cd-gallery-items -->
+        </main>
+
+        <div id="cd-shadow-layer"></div>
+  <div id="cd-cart" class="cd-cart">
+    <h2>Cart</h2>
+    <ul id="cd-cart-items" class="cd-cart-items">
+      <li>
+        <span class="cd-qty">1x</span> Product Name
+        <div class="cd-price">$9.99</div>
+        <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+      </li>
+
+      <li>
+        <span class="cd-qty">2x</span> Product Name
+        <div class="cd-price">$19.98</div>
+        <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+      </li>
+
+      <li>
+        <span class="cd-qty">1x</span> Product Name
+        <div class="cd-price">$9.99</div>
+        <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+      </li>
+    </ul> <!-- cd-cart-items -->
+
+    <div class="cd-cart-total">
+      <p>Total <span>$39.96</span></p>
+    </div> <!-- cd-cart-total -->
+
+    <a href="#0" class="checkout-btn">Checkout</a>
+    
+    <p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>
+  </div> <!-- cd-cart -->
+
 
 <footer class="footer" style="background-image: url('/assets/images/footer-bg.png')">
 

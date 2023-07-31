@@ -1,129 +1,137 @@
-// Define an array to store the cart items
+// Get the necessary elements from the DOM
+const addToCartButtons = document.querySelectorAll('.add-cart');
+const cartIcon = document.getElementById('cart-icon');
+const cartBadge = document.querySelector('.btn-badge');
+const cartItemsContainer = document.querySelector('#cd-cart-items');
+const cartTotalElement = document.querySelector('.cd-cart-total span');
+const checkoutButton = document.querySelector('.checkout-btn');
+
+// Initialize cart variables
+let cartOpen = false;
 let cartItems = [];
+let cartTotal = 0;
 
-// Update Cart Count
-function updateCartCount() {
-  const cartCount = document.querySelector('#cart-count');
-  cartCount.textContent = cartItems.length;
-}
-
-// Toggle Search
-function toggleSearch() {
-  const searchInput = document.querySelector('.search-input');
-  searchInput.classList.toggle('active');
-}
-
-// Toggle Cart
+// Function to toggle the cart visibility
 function toggleCart() {
-  const cartItemsContainer = document.querySelector('#cart-items');
-  cartItemsContainer.classList.toggle('active');
+  cartOpen = !cartOpen;
+  cartItemsContainer.classList.toggle('open');
+}
 
-  const shopContent = document.querySelector('.shop-content');
-  shopContent.classList.toggle('active');
+/// Function to update the cart
+function updateCart() {
+  // Update the cart badge
+  cartBadge.textContent = cartItems.length;
+  
+  // Save the cart items to local storage
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+}
+  // Update cart items in the container
+  cartItems.forEach(item => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <span class="cd-qty">${item.quantity}x</span>
+      <span class="cd-item-name">${item.title}</span>
+      <span class="cd-price">${item.price.toFixed(2)}</span>
+      <a href="#" class="cd-item-remove" data-id="${item.id}"></a>
+    `;
+    cartItemsContainer.appendChild(li);
+  });
 
-  const cartItemsContent = document.getElementById('cart-items');
-  if (cartItemsContainer.classList.contains('active')) {
-    displayCartItems(cartItemsContent);
-    cartItemsContent.classList.add('show');
-  } else {
-    cartItemsContent.classList.remove('show');
+  // Update cart total
+  cartTotalElement.textContent = cartTotal.toFixed(2);
+
+// Enable or disable the checkout button based on cart items
+checkoutButton.disabled = (cartItems.length === 0);
+
+// Function to handle the "Add to Cart" button click event
+function addToCart(e) {
+  try {
+    e.preventDefault();
+    const button = e.target;
+    const productElement = button.closest('.product');
+
+    // Get product information from the clicked button's parent product element
+    const id = productElement.id;
+    const title = productElement.querySelector('.product-title').textContent;
+    const price = parseFloat(productElement.querySelector('.price').textContent);
+    let badge = Number(0)
+
+    // Check if the product is already in the cart
+    const existingItem = cartItems.find(item => item.id === id);
+    if (!existingItem) {
+      // Add the product to the cart
+      const newItem = { id, title, price, quantity: 1 };
+      cartItems.push(newItem);
+    } else {
+      existingItem.quantity++;
+    }
+
+    // Update total price
+    cartTotal += price;
+
+    // Update the cart and display the changes
+    updateCart();
+    
+
+    // Update the cart badge
+    cartItems.forEach(item => {
+      badge += item.quantity
+      console.log(badge)
+      console.log(cartItems)
+    })
+
+    cartBadge.textContent = badge; 
+  } catch (error) {
+    console.error(error);
   }
 }
 
-// Event Listener - Add to Cart
-const cartBtns = document.querySelectorAll('.add-cart');
-cartBtns.forEach((btn) => {
-  btn.addEventListener('click', addToCart);
+
+// Function to handle the "Remove" button click event
+function removeFromCart(e) {
+  e.preventDefault();
+  const removeButton = e.target;
+  const itemId = removeButton.dataset.id;
+
+  // Find the item in the cart
+  const itemIndex = cartItems.findIndex(item => item.id === itemId);
+
+  if (itemIndex !== -1) {
+    // Update total price
+    cartTotal -= cartItems[itemIndex].price * cartItems[itemIndex].quantity;
+
+    // Remove the item from the cart
+    cartItems.splice(itemIndex, 1);
+
+    // Update the cart and display the changes
+    updateCart();
+  }
+}
+
+// Function to handle the cart icon click event
+function handleCartIconClick() {
+  // Toggle the visibility of the cart items container
+  cartItemsContainer.style.display = cartItemsContainer.style.display === 'none' ? 'block' : 'none';
+}
+
+// Attach event listeners to the "Add to Cart" buttons
+addToCartButtons.forEach(button => {
+  button.addEventListener('click', addToCart);
 });
 
-// Event Listener - Toggle Search
-const searchBtn = document.querySelector('[aria-label="toggle search"]');
-searchBtn.addEventListener('click', toggleSearch);
-
-// Event Listener - Toggle Cart
-const cartIcon = document.querySelector('[aria-label="cart"]');
-cartIcon.addEventListener('click', toggleCart);
-
-// Display Cart Items
-function displayCartItems(cartitems) {
-    const container = document.getElementById("cart-items");
-    if (container) {
-      container.innerHTML = "";
-  
-      cartItems.forEach((item) => {
-        const cartItemElement = document.createElement('div');
-        cartItemElement.classList.add('cart-item');
-  
-        const imgElement = document.createElement('img');
-        imgElement.src = item.imageSrc;
-  
-        const titleElement = document.createElement('span');
-        titleElement.textContent = item.title;
-  
-        const priceElement = document.createElement('span');
-        priceElement.textContent = item.price;
-  
-        cartItemElement.appendChild(imgElement);
-        cartItemElement.appendChild(titleElement);
-        cartItemElement.appendChild(priceElement);
-  
-        container.appendChild(cartItemElement);
-      });
-    } else {
-      console.error(`Container element with ID '${containerId}' not found.`);
-    }
+// Attach event listener to the cart items container for the "Remove" buttons
+cartItemsContainer.addEventListener('click', (e) => {
+  if (e.target.classList.contains('cd-item-remove')) {
+    removeFromCart(e);
   }
+});
 
-// Function to add item to cart
-function addToCart(event) {
-  const button = event.target;
-  const productBox = button.closest('.product-box');
+// Attach event listener to the cart icon
+cartIcon.addEventListener('click', handleCartIconClick);
 
-  if (productBox) {
-    const imgElement = productBox.querySelector('.product-img');
-    const titleElement = productBox.querySelector('.product-title');
-    const priceElement = productBox.querySelector('.price');
-
-    if (imgElement && titleElement && priceElement) {
-      const imageSrc = imgElement.src;
-      const title = titleElement.textContent;
-      const price = priceElement.textContent;
-
-      const item = {
-        imageSrc: imageSrc,
-        title: title,
-        price: price
-      };
-
-      cartItems.push(item);
-      updateCartCount();
-    } else {
-      console.log("Error: Image, Title, or Price element not found!");
-    }
-  } else {
-    console.log("Error: Product box not found!");
-  }
-}
-
-// Toggle Cart Overlay
-function toggleCartOverlay() {
-    const cartOverlay = document.querySelector('.cart-overlay');
-    const cartContent = document.querySelector('.cart-content');
-    const shopContent = document.querySelector('#shop .shop-content');
+document.getElementById("cart-icon").addEventListener("click", function() {
+  var cart = document.getElementById("cd-cart");
   
-    if (cartOverlay && cartContent && shopContent) {
-        cartOverlay.classList.toggle('show');
-        cartContent.innerHTML = '';
-  
-      // Check if cartItems is not empty
-      if (cartItems.length !== 0) {
-        displayCartItems('cart-items');
-      }
-         // Toggle shop content opacity
-    shopContent.classList.toggle('active');
-}else {
-      console.error('Error: Cart Overlay or Cart Content not found.');
-    }
-  }
-// Event Listener - Toggle Cart Overlay
-cartIcon.addEventListener('click', () => toggleCartOverlay());
+  // Toggle the "speed-in" class to show/hide the cart items
+  cart.classList.toggle("speed-in");
+});
