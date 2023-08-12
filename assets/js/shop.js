@@ -1,137 +1,232 @@
-// Get the necessary elements from the DOM
-const addToCartButtons = document.querySelectorAll('.add-cart');
-const cartIcon = document.getElementById('cart-icon');
-const cartBadge = document.querySelector('.btn-badge');
-const cartItemsContainer = document.querySelector('#cd-cart-items');
-const cartTotalElement = document.querySelector('.cd-cart-total span');
-const checkoutButton = document.querySelector('.checkout-btn');
+const data= [
+    {
+        id : 0,
+        img : '/assets/images/blog-1.jpg',
+        name : 'Forex Beginner Course',
+        price : 50,
+        itemInCart: false
+    },
+    {
+        id : 1,
+        img : '/assets/images/blog-2.jpg',
+        name : 'Forex Main Course',
+        price : 150,
+        itemInCart: false
+    },
+    {
+        id : 2,
+        img : '/assets/images/blog-3.jpg',
+        name : 'Forex In Person Course',
+        price : 450,
+        itemInCart: false
+    },
+    {
+        id : 3,
+        img : '/assets/images/blog-1.jpg',
+        name : 'Learn & Earn',
+        price : 25,
+        itemInCart: false
+    },
+    {
+        id : 4,
+        img : '/images/redminote8.jpg',
+        name : 'Redmi Note 8',
+        price : 200,
+        save : 15,
+        delievery : 'In 3 - 4 days',
+        itemInCart: false
+    },
+    {
+        id : 5,
+        img : '/images/redminote9.jpg',
+        name : 'Redmi Note 9',
+        price : 220,
+        save : 25,
+        delievery : 'In 3 - 4 days',
+        itemInCart: false
+    },
+    {
+        id : 6,
+        img : '/images/redmi8.jpg',
+        name : 'Redmi 8A Dual',
+        price : 160,
+        save : 20,
+        delievery : 'In 3 - 4 days',
+        itemInCart: false
+    },
+    {
+        id : 7,
+        img : '/images/redmi9.jpg',
+        name : 'Redmi 9',
+        price : 100,
+        save : 10,
+        delievery : 'In 3 - 4 days',
+        itemInCart: false
+    },
+];
 
-// Initialize cart variables
-let cartOpen = false;
-let cartItems = [];
-let cartTotal = 0;
+let cartList=[]; //array to store cart lists
 
-// Function to toggle the cart visibility
-function toggleCart() {
-  cartOpen = !cartOpen;
-  cartItemsContainer.classList.toggle('open');
-}
+var i;
+var detail =document.getElementsByClassName('card-item');
+var detailsImg = document.getElementById('details-img')
+var detailTitle = document.getElementById('detail-title')
+var detailPrice = document.getElementById('detail-price')
+var youSave = document.getElementById('you-save');
+var detailsPage = document.getElementById('details-page');
+var back = document.getElementById('buy')
+back.addEventListener('click',refreshPage)
+var addToCarts = document.querySelectorAll('#add-to-cart')
+var cart = document.getElementById('cart');
+var detail = document.querySelectorAll('.card-item');
+// click event to display cart page
+cart.addEventListener('click',displayCart)
 
-/// Function to update the cart
-function updateCart() {
-  // Update the cart badge
-  cartBadge.textContent = cartItems.length;
-  
-  // Save the cart items to local storage
-  localStorage.setItem('cartItems', JSON.stringify(cartItems));
-}
-  // Update cart items in the container
-  cartItems.forEach(item => {
-    const li = document.createElement('li');
-    li.innerHTML = `
-      <span class="cd-qty">${item.quantity}x</span>
-      <span class="cd-item-name">${item.title}</span>
-      <span class="cd-price">${item.price.toFixed(2)}</span>
-      <a href="#" class="cd-item-remove" data-id="${item.id}"></a>
-    `;
-    cartItemsContainer.appendChild(li);
-  });
+var carts = document.getElementById('carts');
 
-  // Update cart total
-  cartTotalElement.textContent = cartTotal.toFixed(2);
+//click events to add items to cart from details page
+carts.addEventListener('click',()=>addToCart(getId))
 
-// Enable or disable the checkout button based on cart items
-checkoutButton.disabled = (cartItems.length === 0);
+var home = document.getElementById('logo');
 
-// Function to handle the "Add to Cart" button click event
-function addToCart(e) {
-  try {
-    e.preventDefault();
-    const button = e.target;
-    const productElement = button.closest('.product');
+//click event to hide cart page and return to home page
+home.addEventListener('click',hideCart);
 
-    // Get product information from the clicked button's parent product element
-    const id = productElement.id;
-    const title = productElement.querySelector('.product-title').textContent;
-    const price = parseFloat(productElement.querySelector('.price').textContent);
-    let badge = Number(0)
-
-    // Check if the product is already in the cart
-    const existingItem = cartItems.find(item => item.id === id);
-    if (!existingItem) {
-      // Add the product to the cart
-      const newItem = { id, title, price, quantity: 1 };
-      cartItems.push(newItem);
-    } else {
-      existingItem.quantity++;
+//events on dynamically created element to remove items from list
+document.addEventListener('click',function (e){
+    if(e.target.id=='remove'){
+        var itemId = e.target.parentNode.id
+        removeFromCart(itemId)
     }
+})
 
-    // Update total price
-    cartTotal += price;
 
-    // Update the cart and display the changes
-    updateCart();
-    
-
-    // Update the cart badge
-    cartItems.forEach(item => {
-      badge += item.quantity
-      console.log(badge)
-      console.log(cartItems)
-    })
-
-    cartBadge.textContent = badge; 
-  } catch (error) {
-    console.error(error);
+//click event to display details page
+for (var i = 0; i < detail.length; i++) {
+    detail[i].addEventListener('click', handleDetail);
   }
+
+var getId;
+
+//click events to add items to cart from home page cart icon
+addToCarts.forEach(val => {
+  const parentNode = val.parentNode;
+  val.addEventListener('click', () => addToCart(parentNode.id));
+});
+// details function
+function handleDetail(e){
+    detailsPage.style.display = 'block'
+    getId= this.parentNode.id;
+    detailsImg.src= data[getId].img;
+    detailTitle.innerHTML=   data[getId].name;
+    detailPrice.innerHTML= 'Price : $ ' +data[getId].price;
 }
 
-
-// Function to handle the "Remove" button click event
-function removeFromCart(e) {
-  e.preventDefault();
-  const removeButton = e.target;
-  const itemId = removeButton.dataset.id;
-
-  // Find the item in the cart
-  const itemIndex = cartItems.findIndex(item => item.id === itemId);
-
-  if (itemIndex !== -1) {
-    // Update total price
-    cartTotal -= cartItems[itemIndex].price * cartItems[itemIndex].quantity;
-
-    // Remove the item from the cart
-    cartItems.splice(itemIndex, 1);
-
-    // Update the cart and display the changes
-    updateCart();
+// Function to update the cart count in the badge
+function updateCartCount() {
+    const cartBadgeElement = document.getElementById('cart-badge');
+    cartBadgeElement.textContent = cartList.length.toString();
   }
+
+// add item to the cart
+function addToCart(id) {
+    if (!data[id].itemInCart) {
+      data[id].itemInCart = true; // Update itemInCart property before adding to cartList
+      cartList = [...cartList, data[id]];
+      addItem();
+      updateCartCount(); // Update cart badge
+    } else {
+      alert('Your item is already there');
+    }
+  }
+
+//back to main page
+function refreshPage(){
+    detailsPage.style.display = 'none'
 }
 
-// Function to handle the cart icon click event
-function handleCartIconClick() {
-  // Toggle the visibility of the cart items container
-  cartItemsContainer.style.display = cartItemsContainer.style.display === 'none' ? 'block' : 'none';
+// hide your cart page
+function hideCart(){
+    document.getElementById('main').style.display= "block";
+    document.getElementById('cart-container').style.display= "none";
 }
 
-// Attach event listeners to the "Add to Cart" buttons
-addToCartButtons.forEach(button => {
-  button.addEventListener('click', addToCart);
-});
+//display your cart page
+function displayCart(){
+    document.getElementById('main').style.display= "none";
+    document.getElementById('details-page').style.display= "none";
+    document.getElementById('cart-container').style.display= "block";
+    if(cartList.length==0){
+        document.getElementById('cart-with-items').style.display= "none";
+        document.getElementById('empty-cart').style.display= "block";
+    }
+    else{
+        document.getElementById('empty-cart').style.display= "none";
+        document.getElementById('cart-with-items').style.display= "block";
+        
+    }
+}
 
-// Attach event listener to the cart items container for the "Remove" buttons
-cartItemsContainer.addEventListener('click', (e) => {
-  if (e.target.classList.contains('cd-item-remove')) {
-    removeFromCart(e);
-  }
-});
+var totalAmount;
+var totalItems;
 
-// Attach event listener to the cart icon
-cartIcon.addEventListener('click', handleCartIconClick);
+//add item to the cart
+function addItem(){
+    totalAmount=0;
+    totalItems = 0;
+    var clrNode=document.getElementById('item-body');
+        clrNode.innerHTML= '';
+        console.log(clrNode.childNodes)
+        cartList.map((cart)=>
+        {
+            var cartCont = document.getElementById('item-body');
+            totalAmount = totalAmount + cart.price;
+            totalItems = totalItems + 1;
 
-document.getElementById("cart-icon").addEventListener("click", function() {
-  var cart = document.getElementById("cd-cart");
-  
-  // Toggle the "speed-in" class to show/hide the cart items
-  cart.classList.toggle("speed-in");
-});
+            var tempCart = document.createElement('div')
+            tempCart.setAttribute('class','cart-list');
+            tempCart.setAttribute('id',cart.id);
+
+            var listImg = document.createElement('img');
+            listImg.setAttribute('id','list-img');
+            listImg.src = cart.img
+            tempCart.appendChild(listImg)
+
+            var listName = document.createElement('h3');
+            listName.setAttribute('class','list-name');
+            listName.innerHTML = cart.name;
+            tempCart.appendChild(listName)
+
+            var listPay = document.createElement('h3');
+            listPay.setAttribute('class','pay');
+            listPay.innerHTML = cart.price;
+            tempCart.appendChild(listPay);
+
+            var listQuantity = document.createElement('h3');
+            listQuantity.setAttribute('class','quantity');
+            listQuantity.innerHTML = '1';
+            tempCart.appendChild(listQuantity);
+
+            var listTrash = document.createElement('i');
+            listTrash.setAttribute('class','fa fa-trash ');
+            listTrash.setAttribute('id','remove');
+            tempCart.appendChild(listTrash);
+
+            cartCont.appendChild(tempCart)
+            
+        })
+        document.getElementById('total-amount').innerHTML = 'Total Amount : $ ' + totalAmount;
+        document.getElementById('total-items').innerHTML = 'Total Items : ' + totalItems;
+        document.getElementById('total').style.display= "block";
+}
+
+//remove item from the cart
+function removeFromCart(itemId){
+    data[itemId].itemInCart = false
+    cartList = cartList.filter((list)=>list.id!=itemId);
+    addItem()
+    if(cartList.length==0){
+        document.getElementById('cart-with-items').style.display= "none";
+        document.getElementById('empty-cart').style.display= "block";
+    }
+}
