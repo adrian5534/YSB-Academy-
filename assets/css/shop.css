@@ -184,7 +184,7 @@ main section
   background-color: var(--selective-yellow);
   color: var(--selective-purple);
 }
-*/
+
 /* Details page */
 #details-page{
   background: rgba(128, 128, 128, 0.356);
@@ -233,7 +233,7 @@ main section
   color: rgb(199, 110, 110);
   font-size: 1.5rem;
 }
-/*  #delievery{
+ #delievery{
   margin-top: 1.5rem;
   font-size: 1.2rem;
 }
@@ -246,7 +246,7 @@ main section
   margin: 0.5rem 0;
   font-family: sans-serif;
   list-style-position: inside;
-}*/
+}
 .items-detail button{
   font-size: 1.5rem;
   padding: 0.3rem;
