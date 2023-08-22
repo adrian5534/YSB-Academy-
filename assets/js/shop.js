@@ -147,24 +147,12 @@ function refreshPage(){
 
 // hide your cart page
 function hideCart(){
-    document.getElementById('main').style.display= "block";
-    document.getElementById('cart-container').style.display= "none";
+   document.getElementById('main').style.display= "block";
 }
 
 //display your cart page
 function displayCart(){
-    document.getElementById('main').style.display= "none";
     document.getElementById('details-page').style.display= "none";
-    document.getElementById('cart-container').style.display= "block";
-    if(cartList.length==0){
-        document.getElementById('cart-with-items').style.display= "none";
-        document.getElementById('empty-cart').style.display= "block";
-    }
-    else{
-        document.getElementById('empty-cart').style.display= "none";
-        document.getElementById('cart-with-items').style.display= "block";
-        
-    }
 }
 
 var totalAmount;
@@ -223,10 +211,11 @@ function addItem(){
 //remove item from the cart
 function removeFromCart(itemId){
     data[itemId].itemInCart = false
-    cartList = cartList.filter((list)=>list.id!=itemId);
+    cartList = cartList.filter((list)=> list.id != itemId);
     addItem()
-    if(cartList.length==0){
-        document.getElementById('cart-with-items').style.display= "none";
-        document.getElementById('empty-cart').style.display= "block";
+    updateCartCount(); // Call updateCartCount() after removing an item
+    if(cartList.length == 0){
+        document.getElementById('cart-with-items').style.display = "none";
+        document.getElementById('empty-cart').style.display = "block";
     }
 }
