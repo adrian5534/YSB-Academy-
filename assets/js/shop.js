@@ -1,71 +1,37 @@
+let cartList=[]; //array to store cart lists
+
 const data= [
     {
         id : 0,
-        img : '/assets/images/blog-1.jpg',
+        img : './images/blog-1.jpg',
         name : 'Forex Beginner Course',
         price : 50,
         itemInCart: false
     },
     {
         id : 1,
-        img : '/assets/images/blog-2.jpg',
+        img : './images/blog-2.jpg',
         name : 'Forex Main Course',
         price : 150,
         itemInCart: false
     },
     {
         id : 2,
-        img : '/assets/images/blog-3.jpg',
+        img : './images/blog-3.jpg',
         name : 'Forex In Person Course',
         price : 450,
         itemInCart: false
     },
     {
         id : 3,
-        img : '/assets/images/blog-1.jpg',
+        img : './images/blog-1.jpg',
         name : 'Learn & Earn',
         price : 25,
         itemInCart: false
     },
-    {
-        id : 4,
-        img : '/images/redminote8.jpg',
-        name : 'Redmi Note 8',
-        price : 200,
-        save : 15,
-        delievery : 'In 3 - 4 days',
-        itemInCart: false
-    },
-    {
-        id : 5,
-        img : '/images/redminote9.jpg',
-        name : 'Redmi Note 9',
-        price : 220,
-        save : 25,
-        delievery : 'In 3 - 4 days',
-        itemInCart: false
-    },
-    {
-        id : 6,
-        img : '/images/redmi8.jpg',
-        name : 'Redmi 8A Dual',
-        price : 160,
-        save : 20,
-        delievery : 'In 3 - 4 days',
-        itemInCart: false
-    },
-    {
-        id : 7,
-        img : '/images/redmi9.jpg',
-        name : 'Redmi 9',
-        price : 100,
-        save : 10,
-        delievery : 'In 3 - 4 days',
-        itemInCart: false
-    },
 ];
 
-let cartList=[]; //array to store cart lists
+
 
 var i;
 var detail =document.getElementsByClassName('card-item');
@@ -79,13 +45,30 @@ back.addEventListener('click',refreshPage)
 var addToCarts = document.querySelectorAll('#add-to-cart')
 var cart = document.getElementById('cart');
 var detail = document.querySelectorAll('.card-item');
+var checkoutBtn = document.getElementById('checkoutBtn');
+
+
 // click event to display cart page
-cart.addEventListener('click',displayCart)
+cart.addEventListener('click',displayCart);
+
+// stripe key
+
+
+window.addEventListener('DOMContentLoaded', () => {
+  const addToCartButtons = document.querySelectorAll('#add-to-cart');
+  addToCartButtons.forEach((button) => {
+    button.addEventListener('click', function() {
+      const itemId = this.getAttribute('data-item-id');
+      addToCart(itemId);
+    });
+  });
+}); 
+
 
 var carts = document.getElementById('carts');
 
 //click events to add items to cart from details page
-carts.addEventListener('click',()=>addToCart(getId))
+//carts.addEventListener('click',()=>addToCart(getId))
 
 var home = document.getElementById('logo');
 
@@ -108,11 +91,27 @@ for (var i = 0; i < detail.length; i++) {
 
 var getId;
 
-//click events to add items to cart from home page cart icon
-addToCarts.forEach(val => {
-  const parentNode = val.parentNode;
-  val.addEventListener('click', () => addToCart(parentNode.id));
+// click events to add items to cart from home page cart icon
+addToCarts.forEach((button, index) => {
+  button.addEventListener('click', function() {
+    const itemId = detail[index].id;
+    addToCart(itemId);
+  });
 });
+  
+ // Function to load cart items from localStorage
+ function loadCartItems() {
+    const savedCartItems = localStorage.getItem('cartItems');
+    if (savedCartItems) {
+      cartList = JSON.parse(savedCartItems);
+      updateCartCount(); // Update cart badge
+      addItem(); // Update cart display
+    }
+  }
+  
+  // Call the loadCartItems function when the page loads
+  loadCartItems();
+
 // details function
 function handleDetail(e){
     detailsPage.style.display = 'block'
@@ -130,20 +129,21 @@ function updateCartCount() {
 
 // add item to the cart
 function addToCart(id) {
-    if (!data[id].itemInCart) {
-      data[id].itemInCart = true; // Update itemInCart property before adding to cartList
-      cartList = [...cartList, data[id]];
-      addItem();
-      updateCartCount(); // Update cart badge
-    } else {
-      alert('Your item is already there');
-    }
+  if (data[id] && !data[id].itemInCart) {
+    data[id].itemInCart = true; // Update itemInCart property before adding to cartList
+    cartList.push(data[id]); // Add item to the cartList array
+    addItem(); // Update the cart display
+    updateCartCount(); // Update the cart count badge
+    saveCartItems(); // Save cart items in localStorage
+  } else {
+    alert('Item is already in the cart or does not exist');
   }
+}
 
 //back to main page
 function refreshPage(){
     detailsPage.style.display = 'none'
-}
+}  
 
 // hide your cart page
 function hideCart(){
@@ -164,8 +164,9 @@ function addItem(){
     totalItems = 0;
     var clrNode=document.getElementById('item-body');
         clrNode.innerHTML= '';
-        console.log(clrNode.childNodes)
-        cartList.map((cart)=>
+        
+        if (cartList.length > 0) {
+        cartList.map((cart)=> 
         {
             var cartCont = document.getElementById('item-body');
             totalAmount = totalAmount + cart.price;
@@ -201,11 +202,18 @@ function addItem(){
             tempCart.appendChild(listTrash);
 
             cartCont.appendChild(tempCart)
-            
-        })
-        document.getElementById('total-amount').innerHTML = 'Total Amount : $ ' + totalAmount;
-        document.getElementById('total-items').innerHTML = 'Total Items : ' + totalItems;
-        document.getElementById('total').style.display= "block";
+        });
+
+    
+    document.getElementById('total-amount').innerHTML = 'Total Amount: $ ' + totalAmount;
+    document.getElementById('total-items').innerHTML = 'Total Items: ' + totalItems;
+    document.getElementById('total').style.display = "block";
+    document.getElementById('cart-with-items').style.display = "block";
+    document.getElementById('empty-cart').style.display = "none";
+  } else {
+    document.getElementById('cart-with-items').style.display = "none";
+    document.getElementById('empty-cart').style.display = "block";
+}
 }
 
 //remove item from the cart
@@ -219,3 +227,49 @@ function removeFromCart(itemId){
         document.getElementById('empty-cart').style.display = "block";
     }
 }
+// Function to save cart items in localStorage
+function saveCartItems() {
+    localStorage.setItem('cartItems', JSON.stringify(cartList));
+  }
+  
+ // Add event listener to the "Add to Cart" button on the "details" page
+var addToCartDetails = document.getElementById('add-to-cart-details');
+addToCartDetails.addEventListener('click', function() {
+  addToCart(getId);
+});
+
+
+  // Event listener for the checkout button
+checkoutBtn.addEventListener("click", checkout);
+
+
+
+// Function to handle the checkout process
+function checkout() {
+    // Perform the checkout functionality here
+    // You can redirect the user to a checkout page, send a request to a server, etc.
+    // Add your own code to handle the checkout process
+    const checkoutbtn = document.querySelector("#checkoutBtn");
+
+    checkoutBtn.addEventListener("click", () => {
+      fetch("/stripe-checkout", {
+        method: "post",
+        headers: new Headers({ "Content-Type": "applicatin/Json" }),
+        body: JSON.stringify({
+          items: JSON.parse(localStorage.getItem("cartItems")),
+        }),
+      })
+      .then((res) => res.json())
+      .then((url) => {
+        location.href = url;
+      })
+      .catch((err) => console.log(err));
+    });
+
+    // Clear the cart and update the UI as needed
+    cartList = [];
+    addItem();
+    updateCartCount();
+  
+  }
+  
