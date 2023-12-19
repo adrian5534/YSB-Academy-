@@ -198,3 +198,6 @@ function updateCartCount() {
         updateCartCount(); // Update the cart count after restoring the items
       }
     }
+
+    // No more editing below this line
+    

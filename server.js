@@ -71,15 +71,15 @@ app.post("/stripe-checkout", async (req, res) => {
     // payment_method_types: ["card"],
     payment_method_types: ["card"],
     mode: "payment",
-    success_url: "http://localhost:3000/pages/success",
-    cancel_url: "http://localhost:3000/pages/cancel",
+    success_url: "http://localhost:3000/success",
+    cancel_url: "http://localhost:3000/cancel",
     line_items: lineItems,
 
     // Asking Address In Stripe 
     billing_address_collection: "required"
   });
   res.json(session.url);
-});
+}); 
 
 app.listen(3000, () => {
   console.log("listening on port 3000")
