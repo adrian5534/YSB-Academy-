@@ -1,396 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA_Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>YSB Academy - Master The Art And Sciencd Of Trading</title>
-        <meta name="title" content="YSB Academy - Master The Art And Science Of Trading">
-        <meta name="description" content="This is an forex educational website made by Adrian Reynolds">
-
-        <!--
-            -favicon
-        -->
-        <link rel="shortcut icon" href="/favicon1.svg" type="image/svg+xml">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <!--
-            -custom css links
-        -->
-        <link rel="stylesheet" type="text/css" href="/css/style.css">
-        <link rel="stylesheet" type="text/css" href="/css/shop.css">
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-        <!---->
-        <!--
-            -google font link 
-        -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Poppins:wght@400;500&display=swap"
-  rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
-  <!--
-    - preload images 
-  -->
-
-
-    </head>
-
-
-    <body id="top">
-
-<!--
-    - #HEADER
--->
-<header class="header" data-header>
-    <div class="container">
-
-        <a href="/index.html" class="logo">
-            <img src="/images/logo1.svg" width="162" height="50" alt="YSB Academy logo">
-        </a>
-        
-        <nav class="navbar" data-navbar>
-            
-                <div class="wrapper">
-                <a href="/index.html" class="logo">
-                    <img src="/images/logo.svg" width="162" height="50" alt="YSB Academy logo" >
-                </a>
-
-                <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
-                    <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
-                </button>
-            </div>
-
-            <ul class="navbar-list">
-
-                <li class="navbar-item">
-                    <a href="/index.html" class="navbar-link">Home</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="/pages/about.html" class="navbar-link">About</a>
-                </li>
-                <li class="navbar-item">
-                  <a href="/pages/sshop.html" class="navbar-link">Shop</a>
-              </li>
-                <li class="navbar-item">
-                    <a href="/pages/shop.html" class="navbar-link">Shop</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="/pages/blog.html" class="navbar-link">Blog</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="/pages/contact.html" class="navbar-link">Contact</a>
-                </li>
-            </ul>
-            
-        </nav>
-
-        <div class="header-actions">
-          
-        
-          <button class="header-action-btn" aria-label="toggle search" title="Search">
-            <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
-          </button>
-
-          <button class="header-action-btn" id="cart" aria-label="cart" title="Cart">
-            <ion-icon  name="cart-outline" aria-hidden="true"></ion-icon>
-
-            <span class="btn-badge" id="cart-badge">0</span>
-        </button>
-        
-          <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
-            <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
-          </button>
-        </div>
-        
-        <div class="overlay" data-nav-toggler data-overlay>
-
-        </div>
-        </div>
-        </header>
-        <main id="main" >
-      <!-- all categories -->
-      <section class="categories">
-          <div class="title-container">
-              <h1 id="title">YSB Academy Shop</h1>
-              <button type="button" id="item-btn" style="display: none;">View All</button>
-          </div>
-          <div class="card">
-            <!--
-            <div class="test">
-              <div class="item-container" id="1">
-                  <div class="card-item" >
-                      <img src="/images/blog-2.jpg" alt="img" id="card-img">
-                      <p id="item-name">Forex Main Course</p>              
-                  </div>
-                  <i class="fa fa-shopping-cart" id="add-to-cart"> Add to Cart </i>
-                  <h3 id="item-price">Price: US $150</h3>
-              </div>
-              </div>
-              <div class="test">
-              <div class="item-container" id="2">
-                  <div class="card-item" >
-                      <img src="/images/blog-3.jpg" alt="img" id="card-img">
-                      <p id="item-name">Forex In Person Class</p>
-                  </div>
-                  <i class="fa fa-shopping-cart" id="add-to-cart"> Add to Cart </i>
-                  <h3 id="item-price">Price: US $450</h3>                
-              </div>
-              </div>
-              Box 4
-              <div class="test">
-              <div class="item-container" id="3">
-                  <div class="card-item">
-                      <img src="/images/blog-3.jpg" alt="img" id="card-img">
-                      <p id="item-name">Learn & Earn</p>
-                  </div>
-                  <i class="fa fa-shopping-cart" id="add-to-cart"> Add to Cart </i>
-                  <h3 id="item-price">Price: US $25</h3>            
-              </div>
-              </div>
-          </div>
-        -->
-      </section>
-    </main>
-        <!-- End of Main-->
-        <div id="logo"></div>
-
-        <!-- Details page Section -->
-        <div id="details-page">
-          <div class="details">
-            <div class="items-detail">
-              <div class="image-container">
-                <img src="./images/course-1.svg" alt="" id="details-img">
-              </div>
-              <div class="details-card">
-                <h2 id="detail-title">Forex Beginner Course</h2>
-                <h4 id="detail-price">Price : USD 300</h4>
-               <!-- <p id="delievery"><strong>Delivery : </strong>In 3 - 4 days</p>
-                <p id="spec"><strong>Specification</strong>
-                <ul>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                </ul>
-              </p> -->
-                <button id="carts">Add to Cart</button>
-                <button id="buy">Back</button>
-              </div>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA_Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YSB Academy</title>
+  <link rel="stylesheet" href="/assets/css/sshop.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+     <!--Navbar-->
+     <header>
+      <div class="nav containerr">
+        <!--Logo-->
+        <a href="#" class="logo">YSB Academy</a>
+        <!--Cart Icon-->
+        <i class='bx bx-shopping-bag' id="cart-icon" data-quantity="0"></i>
+        <div class="cart">
+          <h2 class="cart-title">Your Cart</h2>
+          <div class="cart-content">
+            <div class="cart-box">
+              
             </div>
           </div>
+          <div class="total">
+            <div class="total-title">Total</div>
+            <div id="product-price" class="total-price">$0</div>
+          </div>
+          <button type="button" class="btn-buy">Pay Now</button>
+          <i class='bx bx-x' id="close-cart"></i>
         </div>
-        <!-- End of Page Detail -->
-        <div id="cd-shadow-layer"></div>
-        <!--Cart list Section-->
-        <div id="cart-container">
-          <p id="cart-title">Your <strong>Cart</strong></p id="cart-title">
-          <div id="empty-cart">
-              <h1>Your Cart is Empty...</h1>
-          </div>
-      
-          <div class="cd-cart-items" id="cart-with-items">
-              <div class="cart-column">
-                  <h3>Product</h3>
-                  <h3>Product Name</h3>
-                  <h3 class="cd-price">Total </h3>
-                  <h3 class="cd-qty">Quantity</h3>
-                  <h3 class="cd-item-remove">Remove</h3>
-              </div>
-              <div id="item-body">
-              </div>
-              <div class="cd-cart-total" id="total">
-                  <h3 id="total-items"></h3>
-                  <h2 id="total-amount"></h2>
-              </div>
-              <a href="#0" class="checkout-btn">Checkout</a>
-              <p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>
-          </div>
       </div>
-
-<footer class="footer" style="background-image: url('/images/footer-bg.png')">
-
-    <div class="footer-top section">
-      <div class="container grid-list">
-
-        <div class="footer-brand">
-
-            <a href="#" class="logo">
-              <img src="/images/logo-light.svg" width="162" height="50" alt="EduWeb logo">
-            </a>
-  
-            <p class="footer-brand-text">
-              MASTER THE ART AND SCIENCE OF TRADING.
-            </p>
-  
-            <div class="wrapper">
-              <span class="span">Add:</span>
-  
-              <address class="address">USA</address>
-            </div>
-  
-            <div class="wrapper">
-              <span class="span">Call:</span>
-  
-              <a href="tel:+18768326382" class="footer-link">+1 (876) 832-6382</a>
-            </div>
-  
-            <div class="wrapper">
-              <span class="span">Email:</span>
-  
-              <a href="mailto:ysbacademy@gmail.com" class="footer-link">info@ysbacademy.com</a>
-            </div>
-  
-
+     </header>
+     
+     <!-- Products -->
+     <section class="shop containerr">
+      <h2 class="section-title">Shop Products</h2>
+      <!-- Shop Content -->
+      <div class="shop-content">
+        <!-- Box 1-->
+        <div class="product-box" id="product-1">
+          <img src="https://ysb-academy-aws-one.s3.us-east-2.amazonaws.com/course-1.svg" 
+          alt="" 
+          class="product-img"/>
+          <h2 class="product-title">Forex Basic 1</h2>
+          <span id="product-price" class="price">$50</span>
+          <i class="bx bx-shopping-bag add-cart"></i>
         </div>
-
-        <ul class="footer-list">
-
-          <li>
-            <p class="footer-list-title">Company</p>
-          </li>
-
-          <li>
-            <a href="/pages/about.html" class="footer-link">About</a>
-          </li>
-
-          <li>
-            <a href="/pages/faq.html" class="footer-link">FAQ's</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link"></a>
-          </li>
-
-          <li>
-            <a href="/pages/terms-of-service.html" class="footer-link">Terms of service</a>
-          </li>
-
-          <li>
-            <a href="/pages/privacy-policy.html" class="footer-link">Privacy Policy</a>
-          </li>
-
-          <li>
-            <a href="/pages/cookie-policy.html" class="footer-link">Cookie policy</a>
-          </li>
-
-        </ul>
-
-        <ul class="footer-list">
-
-          <li>
-            <p class="footer-list-title">Links</p>
-          </li>
-
-          <li>
-            <a href="/index.html" class="footer-link">Home</a>
-          </li>
-
-          <li>
-            <a href="/pages/shop.html" class="footer-link">Shop</a>
-          </li>
-
-          <li>
-            <a href="/pages/blog.html" class="footer-link">News & Articles</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Sign In/Register</a>
-          </li>
-
-        </ul>
-
-        <div class="footer-list">
-
-          <p class="footer-list-title">Newsletter</p>
-
-          <p class="footer-list-text">
-            Enter your email address to register to our newsletter subscription
-          </p>
-
-          <form action="" class="newsletter-form">
-            <input type="email" name="email_address" placeholder="Your email" required class="input-field">
-
-            <button type="submit" class="btn has-before">
-              <span class="span">Subscribe</span>
-
-              <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-            </button>
-          </form>
-
-          <ul class="social-list">
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-facebook"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-linkedin"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-instagram"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-twitter"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-youtube"></ion-icon>
-              </a>
-            </li>
-
-          </ul>
-
+         <!-- Box 2-->
+         <div class="product-box" id="product-2">
+          <img src="https://ysb-academy-aws-one.s3.us-east-2.amazonaws.com/course-2.svg" 
+          alt="" 
+          class="product-img"/>
+          <h2 class="product-title">Forex Basic 2</h2>
+          <span class="price">$150</span>
+          <i class="bx bx-shopping-bag add-cart"></i>
+        </div> <!-- Box 3-->
+        <div class="product-box" id="product-3">
+          <img src="https://ysb-academy-aws-one.s3.us-east-2.amazonaws.com/course-35.svg" 
+          alt="" 
+          class="product-img"/>
+          <h2 class="product-title">Forex Basic 3</h2>
+          <span class="price">$250</span>
+          <i class="bx bx-shopping-bag add-cart"></i>
         </div>
-
+         <!-- Box 4-->
+         <div class="product-box" id="product-4">
+          <img src="https://ysb-academy-aws-one.s3.us-east-2.amazonaws.com/course-1.svg" 
+          alt="" 
+          class="product-img"/>
+          <h2 class="product-title">Forex Basic 4</h2>
+          <span class="price">$350</span>
+          <i class='bx bx-shopping-bag add-cart'></i>
+        </div>
       </div>
-    </div>
+     </section>
+     <!-- Link To JS -->
+     <script src="/assets/js/sshop.js"></script>
+     <script src="/assets/js/cart.js"></script>
+</body>
 
-    <div class="footer-bottom">
-      <div class="container">
-
-        <p class="copyright">
-          Copyright 2023 All Rights Reserved by <a href="#" class="copyright-link">YSB Academy</a>
-        </p>
-
-      </div>
-    </div>
-
-  </footer>
-
-
-
-         <!-- 
-    - #BACK TO TOP
-  -->
-
-  <a href="/#top" class="back-top-btn" aria-label="back top top" data-back-top-btn>
-    <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
-  </a>
-
-<!--
-    - custom js link 
--->
-<script src="/js/script.js" defer></script>
-<script src="/js/shop.js" defer></script>
-<script src="/js/mainshop.js" defer></script>
-
-<!--
-    - ionicon link
--->
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script type="nomodule" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-    </body>
 </html>

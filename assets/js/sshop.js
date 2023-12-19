@@ -1,187 +1,193 @@
-var cartIcon = document.getElementById("cart-icon");
-var cartBox = document.querySelector("cart-content"); // Replace with the actual selector for your cart box
-var priceElement = product.querySelector(".product-price");
+let cartIcon = document.querySelector('#cart-icon');
+let cart = document.querySelector('.cart');
+let closeCart = document.querySelector('#close-cart');
+let cartContent = document.querySelector('.cart-content'); // Move the declaration and assignment of 'cartContent' above the 'addProductToCart' function
+let titleElement = document.querySelector('.product-title');
+let priceElement = document.querySelector('.price');
+let quantityElement = document.querySelector('.quantity');
+let productImgElement = document.querySelector('.product-img');
 
-// Check if product element exists before accessing its properties
-if (product !== null) {
-  var priceElement = product.querySelector(".product-price");
-  // Rest of your code...
-} else {
-  console.error('Product element not found');
-}
-// Check if priceElement exists before accessing its innerText property
-var price = "";
-if (priceElement != null) {
-  price = priceElement.innerText;
-}
-var cartIcon = document.getElementById("cart-icon");
-var cart = document.getElementById("cart");
+let item = {
+  title: titleElement ? titleElement.innerText : "",
+  price: priceElement ? priceElement.innerText : "",
+  quantity: quantityElement ? quantityElement.value : "",
+  productImg: productImgElement ? productImgElement.src : "",
+};
 
 // Open Cart
 cartIcon.onclick = () => {
   cart.classList.add("active");
-}; 
-
-// Close Cart
-var closeCart = document.getElementById("close-cart");
-closeCart.onclick = () => {
-   cart.classList.remove("active");
 };
 
+// Close Cart
+closeCart.onclick = () => {
+  cart.classList.remove("active");
+} 
+
+// Cart Working JS
+document.addEventListener("DOMContentLoaded", ready);
+
+// Making Function
+function ready() {
+  // Retrieve saved cart items from localStorage
+  let savedCartItems = localStorage.getItem("cartItems");
+  if (savedCartItems) {
+    let cartItems = JSON.parse(savedCartItems);
+    // Clear the cart content before adding items
+    cartContent.innerHTML = '';
+    for (let i = 0; i < cartItems.length; i++) {
+      let item = cartItems[i];
+      // Create a new div for each item
+      let itemDiv = document.createElement('div');
+      // Set the innerHTML of the div to display the item's image, name, and price
+      itemDiv.innerHTML = `
+      <img src="${item.productImg}" alt="${item.name}">
+      <h2>${item.name}</h2>
+      <p>${item.price}</p>
+`;
+      // Append the item div to the cart content
+      cartContent.appendChild(itemDiv);
+    }
+    updateTotal();
+  }
+
+  // Remove Items From Cart
+  cartContent.addEventListener('click', function(event) {
+    if (event.target.classList.contains('cart-remove')) {
+      let buttonClicked = event.target;
+      buttonClicked.parentElement.remove();
+      updateTotal();
+      saveCartItems();
+    }
+  });
+}
+
+  // Save Cart Items
+function saveCartItems() {
+  let cartItems = [];
+  let cartBoxes = document.querySelectorAll(".cart-box");
+  for (let i = 0; i < cartBoxes.length; i++) {
+    let cartBox = cartBoxes[i];
+    let titleElement = cartBox.querySelector(".cart-product-title");
+    let priceElement = cartBox.querySelector(".cart-price");
+    let productImgElement = cartBox.querySelector(".cart-img");
+    let quantityElement = cartBox.querySelector(".cart-quantity");
+    if (titleElement && priceElement && productImgElement && quantityElement) {
+      let title = titleElement.innerText;
+      let price = priceElement.innerText;
+      let productImg = productImgElement.src;
+      let quantity = quantityElement.value;
+      cartItems.push({ title, price, productImg, quantity });
+    }
+  }
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  updateTotal(); // Update the total after saving the items
+}
+// Add Product To Cart
+function addProductToCart(title, price, productImg, quantity) {
+  let cartContent = document.querySelector(".cart-content");
+  if (cartContent) {
+    let cartShopBox = document.createElement("div");
+    cartShopBox.classList.add("cart-box");
+    // Set the data-title attribute
+    cartShopBox.dataset.title = title;
+    let cartBoxContent = `
+      <img src="${productImg}" alt="" class="cart-img">
+      <div class="detail-box">
+        <div class="cart-product-title">${title}</div>
+        <div class="cart-price">${price}</div>
+        <input type="number" value="${quantity}" class="cart-quantity">
+      </div>
+      <i class='bx bxs-trash-alt cart-remove'></i>
+    `;
+    cartShopBox.innerHTML = cartBoxContent;
+    cartContent.appendChild(cartShopBox);
+
+    let quantityElement = cartShopBox.querySelector(".cart-quantity");
+    quantityElement.addEventListener('change', function(event) {
+      let newQuantity = parseInt(event.target.value);
+      updateCartItemQuantity(cartShopBox, newQuantity);
+      saveCartItems();
+      updateTotal();
+    });
+  }
+  saveCartItems();
+  updateTotal();
+  updateCartCount(); // Update the cart count after adding an item to the cart
+}
+
+// Update Cart Item Quantity
+function updateCartItemQuantity(cartShopBox, newQuantity) {
+  let quantityElement = cartShopBox.querySelector(".cart-quantity");
+  if (quantityElement) {
+    quantityElement.value = newQuantity;
+  }
+}
+
 // Get all add-cart icons and attach event listeners
-var cartContent = document.getElementById("cart-content");
-var addCartIcons = document.querySelectorAll("add-cart");
-addCartIcons.forEach(function(icon) {
-  icon.addEventListener('click', addCartClicked);
+let shopProducts = document.querySelectorAll('.add-cart');
+shopProducts.forEach(function(button) {
+  button.addEventListener('click', function(event) {
+    let product = event.target.parentElement;
+    let title = product.querySelector('.product-title').innerText;
+    let price = product.querySelector('.price').innerText;
+    let productImg = product.querySelector('.product-img').src;
+    addProductToCart(title, price, productImg, 1);
+  });
 });
-
-// Save item to localStorage
-function saveItemToLocalStorage(item) {
- var existingItems = localStorage.getItem("cartItems");
- var cartItems = existingItems ? JSON.parse(existingItems) : [];
-
- cartItems.push(item);
-
- localStorage.setItem("cartItems", JSON.stringify(cartItems));
-}
-
-// Remove Cart Item
-function removeCartItem(event) {
-  var buttonClicked = event.target;
-  buttonClicked.parentElement.remove();
-  updatetotal();
-
-  // Retrieve title of the item being removed
-  var title = event.target.parentElement.querySelector("cart-product-title").innerText;
-
-  // Remove the item from localStorage
-  removeItemFromLocalStorage(title);
-}
-
-// Quantity Change
-function quantityChanged(event) {
-  var input = event.target;
-  if (isNaN(input.value) || input.value <= 0) {
-     input.value = 1;
-  }
-  updatetotal();
-  updateCartIcon();
-
-  // Retrieve title of the item
-  var title = event.target.parentElement.querySelector("cart-product-title").innerText;
-
-  // Update the quantity of the item in localStorage
-  updateItemQuantityInLocalStorage(title, input.value);
-}
-
-// Add Cart Function
-function addCartClicked(event) {
-  var button = event.target;
-  var product = button.parentElement.parentElement;
   
-  // Check if product element exists
-  if (product) {
-    var priceElement = product.querySelector(".product-price");
-
-    // Check if price element exists
-    if (priceElement) {
-      var price = priceElement.innerText;
-      // Rest of your code...
-    } else {
-      throw new Error('Price element not found');
-    }
-  } else {
-    throw new Error('Product element not found');
-  }
-}
-
-
-// Updated addProductToCart function
-function addProductToCart(item) {
-  var cartItems = document.getElementsByClassName("cart-content")[0];
-  var cartItemsNames = cartItems.getElementsByClassName("cart-product-title");
-  for (var i = 0; i < cartItemsNames.length; i++) {
-    if (cartItemsNames[i].innerText === item.title) {
-      alert("You have already added this item to the cart");
-      return;
+// Update Cart Count
+function updateCartCount() {
+  let cartBoxes = document.querySelectorAll(".cart-box");
+  let cartCount = 0;
+  for (let i = 0; i < cartBoxes.length; i++) {
+    let quantityElement = cartBoxes[i].querySelector(".cart-quantity");
+    if (quantityElement) {
+      cartCount += parseInt(quantityElement.value);
     }
   }
- 
-  var cartShopBox = document.createElement("div");
-  cartShopBox.classList.add("cart-box");
-
-  var cartBoxContent = `
-    <img src="${item.productImg}" alt="" class="cart-img" />
-    <div class="details-box">
-      <div class="cart-product-title">${item.title}</div>
-      <div class="cart-price">${item.price}</div>
-      <input 
-        type="number" 
-        name="" 
-        id="" 
-        value="${item.quantity}" 
-        class="cart-quantity" 
-      />
-    </div>
-    <!-- Remove Item-->
-    <i class='bx bx-trash-alt cart-remove'></i>`;
-
-  cartShopBox.innerHTML = cartBoxContent;
-  cartItems.appendChild(cartShopBox);
-
-  cartShopBox.getElementsByClassName("cart-remove")[0].addEventListener("click", removeCartItem);
-  cartShopBox.getElementsByClassName("cart-quantity")[0].addEventListener("change", quantityChanged);
-
-  updateCartIcon();
-
-
-  /// Save the added item to local storage
-  saveItemToLocalStorage(item);
-}
-
-// Update Total
-function updatetotal() {
-  // ... existing code ...
-
- // Update cart items in localStorage
- var cartBoxes = cartContent.getElementsByClassName("cart-box");
- var updatedCartItems = [];
-
- for (var i = 0; i < cartBoxes.length; i++) {
-   var cartBox = cartBoxes[i];
-   var titleElement = cartBox.getElementsByClassName("cart-product-title")[0];
-   var priceElement = cartBox.getElementsByClassName("cart-price")[0];
-   var quantityElement = cartBox.getElementsByClassName("cart-quantity")[0];
-
-   if (titleElement && priceElement && quantityElement) {
-     var item = {
-       title: titleElement.innerText,
-       price: priceElement.innerText,
-       quantity: quantityElement.value
-     };
-   
-     updatedCartItems.push(item);
-   }
- }
-
- localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
-}
-
-// Update Cart Icon
-function updateCartIcon() {
-  var cartItemsCount = document.getElementsByClassName("cart-box").length;
-  cartIcon.dataset.count = cartItemsCount;
-}
-
-// Load Cart Items from Local Storage
-function loadCartItemsFromLocalStorage() {
-  var existingItems = localStorage.getItem("cartItems");
-  var cartItems = existingItems ? JSON.parse(existingItems) : [];
-
-  for (var i = 0; i < cartItems.length; i++) {
-    addProductToCart(cartItems[i]);
+  let cartIcon = document.querySelector("#cart-icon");
+  if (cartIcon) {
+    cartIcon.setAttribute("data-quantity", cartCount);
   }
 }
 
-// Call function to load cart items from local storage
-loadCartItemsFromLocalStorage();
+  // Update Total
+  function updateTotal() {
+    let cartBoxes = document.querySelectorAll('.cart-box');
+    let total = 0;
+    cartBoxes.forEach(function(cartBox) {
+      let priceElement = cartBox.querySelector('.cart-price');
+      let quantityElement = cartBox.querySelector('.cart-quantity');
+      if (priceElement && quantityElement) {
+        let price = parseFloat(priceElement.innerText.replace("$", ""));
+        if (!isNaN(price)) { // Check if the price is a valid number
+          let quantity = parseFloat(quantityElement.value);
+          total += price * quantity;
+        }
+      }
+    });
+    total = Math.round(total * 100) / 100;
+    document.querySelector(".total-price").innerText = "$" + total;
+    // Save Total to LocalStorage
+    localStorage.setItem("cartTotal", total);
+    updateCartCount(); // Update the cart count after updating the total
+  }
+
+  // Keep Item in cart when page refresh with LocalStoragefunction restoreCartItems() {
+    function restoreCartItems() {
+      let savedCartItems = localStorage.getItem("cartItems");
+      if (savedCartItems) {
+        let cartItems = JSON.parse(savedCartItems);
+        for (let i = 2; i < cartItems.length; i++) {
+          let item = cartItems[i];
+          let title = item.title;
+          let price = item.price;
+          let productImg = item.productImg;
+          let quantity = item.quantity;
+          addProductToCart(title, price, productImg, quantity);
+        }
+        updateTotal(); // Update the total after restoring the items
+        updateCartCount(); // Update the cart count after restoring the items
+      }
+    }

@@ -21,25 +21,42 @@ app.use("/assets", express.static("assets", {
 app.get("/", (req, res) => {
   res.sendFile("index.html", {root: "assets"});
 });
-app.get("/shhop", (req, res) => {
-  res.sendFile("pages/shhop.html", {root: "assets"});
+
+// Shop Route
+app.get("/shop", (req, res) => {
+  res.sendFile("pages/shop.html", {root: "assets"});
 });
+
+// Success Route
+app.get("/success", (req, res) => {
+  res.sendFile("pages/success.html", {root: "assets"});
+});
+
+// Cancel Route
+app.get("/cancel", (req, res) => {
+  res.sendFile("pages/cancel.html", {root: "assets"});
+});
+
+
+ 
 
 app.use(express.static("assets"));
 app.use(express.json());
 
-let stripeGateway = stripe(process.env.stripe_api);
-
+let stripeGateway = stripe(process.env.stripe_api, {
+  timeout: 5000, // Set the timeout to 5 seconds (adjust as needed)
+});
 app.post("/stripe-checkout", async (req, res) => {
   const lineItems = req.body.items.map((item) => {
     const unitAmount = parseInt(item.price.replace(/[^0-9.-]+/g, "") * 100);
     console.log("item-price:", item.price);
     console.log("unitAmount:", unitAmount);
+    const name = item.title ? item.title : "Forex"; // Provide a default name if item.title is empty
     return {
       price_data: {
         currency: "usd",
         product_data: {
-          name: item.title,
+          name: name,
           images: [item.productImg]
         },
         unit_amount: unitAmount,
@@ -51,11 +68,12 @@ app.post("/stripe-checkout", async (req, res) => {
 
   // Create Checkout Session
   const session = await stripeGateway.checkout.sessions.create({
-    payment_method_type: ["card"],
+    // payment_method_types: ["card"],
+    payment_method_types: ["card"],
     mode: "payment",
-    success_url: `${DOMAIN}/success`,
-    cancel_url: `${DOMAIN}/cancel`,
-    line_item: lineItems,
+    success_url: "http://localhost:3000/pages/success",
+    cancel_url: "http://localhost:3000/pages/cancel",
+    line_items: lineItems,
 
     // Asking Address In Stripe 
     billing_address_collection: "required"
@@ -65,4 +83,4 @@ app.post("/stripe-checkout", async (req, res) => {
 
 app.listen(3000, () => {
   console.log("listening on port 3000")
-});
+});  
