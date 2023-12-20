@@ -356,7 +356,7 @@ section {
     transition: 0.3 cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .cart.active {
-    margin-top: 7rem;
+    margin-top: 8rem;
     right: 0;
     transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
