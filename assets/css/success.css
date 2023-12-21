@@ -103,3 +103,133 @@
 body{
     color: var(--text-color);
 }
+
+.sc-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
+    background: var(--white_50)
+}
+
+.sc-container img{
+    width: 360px;
+    height:360px;
+    margin-bottom: 20px;
+}
+
+.sc-container h1{
+    color: #7dcf85;
+    font-size: var(--fs-2);
+    font-weight: var(--fw-600);
+    margin-top: 5rem;
+    margin-bottom: 20px;
+}
+
+.sc-container p{
+    color: #7dcf85;
+    max-width: 600px;
+    font-size: var(--fs-5);
+    text-align: center;
+    margin: 0.5rem 0;
+}
+
+.bk-btn {
+    padding: 12px 20px;
+    border-radius: 2rem;
+    background: #7dcf85;
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.cn-btn {
+    padding: 12px 20px;
+    border-radius: 2rem;
+    background: var(--radical-red);
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin: 1rem 0;
+}
+
+#cancel h1{
+    color: var(--radical-red);
+    font-size: var(--fs-2);
+    font-weight: var(--fw-600);
+    margin-top: 5rem;
+    margin-bottom: 20px;
+}
+
+#cancel p{
+    color: var(--radical-red);
+    max-width: 600px;
+    font-size: var(--fs-5);
+    text-align: center;
+    margin: 1rem 0;
+}
+
+#cancel img{
+    width: 300px;
+    height:300px;
+    margin-bottom: 20px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1200px) {
+    .sc-container img, #cancel img {
+        width: 300px;
+        height: 300px;
+    }
+    .sc-container h1, #cancel h1 {
+        font-size: var(--fs-2);
+    }
+    .sc-container p, #cancel p {
+        font-size: var(--fs-5);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .sc-container img, #cancel img {
+        width: 280px;
+        height: 280px;
+    }
+    .sc-container h1, #cancel h1 {
+        font-size: var(--fs-2);
+    }
+    .sc-container p, #cancel p {
+        font-size: var(--fs-5);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .sc-container img, #cancel img {
+        width: 200px;
+        height: 200px;
+    }
+    .sc-container h1, #cancel h1 {
+        font-size: var(--fs-2);
+    }
+    .sc-container p, #cancel p {
+        font-size: var(--fs-5);
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .sc-container img, #cancel img {
+        width: 200px;
+        height: 200px;
+    }
+    .sc-container h1, #cancel h1 {
+        font-size: var(--fs-4);
+    }
+    .sc-container p, #cancel p {
+        font-size: var(--fs-7);
+    }
+}
+
