@@ -1,0 +1,28 @@
+{
+    "YSB": [
+        {
+         "id": 0,
+        "imgName": "blog-1.jpg",
+        "name" : "Forex Beginner Course",
+        "price" : 50
+        },
+        {
+        "id" : 1,
+        "imgName" : "blog-2.jpg",
+        "name" : "Forex Main Course",
+        "price" : 150
+        },
+        {
+        "id" : 2,
+        "imgName" : "blog-3.jpg",
+        "name" : "Forex In Person Course",
+        "price" : 450
+        },
+        {
+        "id" : 3,
+        "imgName" : "blog-1.jpg",
+        "name" : "Learn & Earn",
+        "price" : 25
+        }
+    ]
+}

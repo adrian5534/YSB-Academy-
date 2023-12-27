@@ -80,3 +80,5 @@ function move_navigation( $navigation, $MQ) {
 		$navigation.insertAfter('header');
 	}
 }
+
+//Do Not Edit This JS File Before OR After This Comment 
