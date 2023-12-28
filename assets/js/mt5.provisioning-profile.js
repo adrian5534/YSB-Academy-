@@ -59,7 +59,7 @@ if (data.error) {
   // If the error message is "You are allowed to create no more than 1 trading account", change it
   if (errorMessage === "You are allowed to create no more than 1 trading account") {
     errorMessage = "Forbidden Error"; // Replace with your desired error message
-  } 
+  }
 
   messageDiv.textContent = errorMessage;
 
