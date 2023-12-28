@@ -56,9 +56,9 @@ if (data.error) {
   // If there's an error, display the error message
   var errorMessage = data.message;
 
-  // If the error message is "You are allowed to create no more than 1 trading account", change it
-  if (errorMessage === "You are allowed to create no more than 1 trading account") {
-    errorMessage = "Forbidden Error"; // Replace with your desired error message
+  // If the error message is "You are allowed to create no more than 2 trading account", change it
+  if (errorMessage === "You are allowed to create no more than 2 trading account") {
+    errorMessage = "Forbidden ErrorYou are allowed to create no more than 1 trading account"; // Replace with your desired error message
   }
 
   messageDiv.textContent = errorMessage;
