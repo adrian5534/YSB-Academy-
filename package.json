@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.cjs",
     "dev": "nodemon server.cjs",
-    "build": "babel src --out-dir dist",
+    "build": "babel assets/js --out-dir dist",
     "serve": "node dist/server.cjs"
   },
   "keywords": [],
