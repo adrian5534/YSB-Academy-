@@ -1,13 +1,14 @@
 {
   "name": "ysb-academy-",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "server.cjs",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.cjs",
-    "dev": "nodemon server.cjs"
+    "dev": "nodemon server.cjs",
+    "build": "yarn build"
   },
   "keywords": [],
   "author": "",
