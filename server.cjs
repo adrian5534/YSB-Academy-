@@ -1,3 +1,4 @@
+// server.cjs
 const express = require("express");
 const dotenv = require("dotenv");
 const stripe = require("stripe");
@@ -13,6 +14,7 @@ const app = express();
 
 app.use(cors()); // Enable CORS
 
+// Serve Static Files
 app.use("/assets", express.static("assets", {
   setHeaders: (res, path) => {
     if (path.endsWith(".css")) {
@@ -44,14 +46,14 @@ app.get("/cancel", (req, res) => {
 
 
   
-
-app.use(express.static("assets"));
 app.use(express.json());
 
+// Stripe Gateway
 let stripeGateway = stripe(process.env.stripe_api, {
   timeout: 5000, // Set the timeout to 5 seconds (adjust as needed)
 });
  
+// MetaApi Gateway
 const api = new MetaApi(process.env.meta_api,);
 
 app.post('https://mt-provisioning-api-v1.agiliumtrade.agiliumtrade.ai/users/current/accounts', async (req, res) => {
@@ -75,6 +77,7 @@ app.post('https://mt-provisioning-api-v1.agiliumtrade.agiliumtrade.ai/users/curr
   }
 });
 
+// Stripe Checkout
 app.post("/stripe-checkout", async (req, res) => {
   const lineItems = req.body.items.map((item) => {
     const unitAmount = parseInt(item.price.replace(/[^0-9.-]+/g, "") * 100);
