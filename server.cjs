@@ -42,6 +42,11 @@ app.get("/blog", (req, res) => {
   res.sendFile("pages/blog.html", {root: "assets"});
 });
 
+// faq Route
+app.get("/faq", (req, res) => {
+  res.sendFile("pages/faq.html", {root: "assets"});
+});
+
 // Shop Route
 app.get("/shop", (req, res) => {
   res.sendFile("pages/shop.html", {root: "assets"});
