@@ -27,6 +27,21 @@ app.get("/", (req, res) => {
   res.sendFile("index.html", {root: "assets"});
 });
 
+// About Route
+app.get("/about", (req, res) => {
+  res.sendFile("pages/about.html", {root: "assets"});
+});
+
+// Contact Route
+app.get("/contact", (req, res) => {
+  res.sendFile("pages/contact.html", {root: "assets"});
+});
+
+// blog Route
+app.get("/blog", (req, res) => {
+  res.sendFile("pages/blog.html", {root: "assets"});
+});
+
 // Shop Route
 app.get("/shop", (req, res) => {
   res.sendFile("pages/shop.html", {root: "assets"});
