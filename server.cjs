@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const stripe = require("stripe");
 const MetaApi = require('metaapi.cloud-sdk').default;
 const cors = require('cors');
+const path = require('path');
 
 // Load Variables
 dotenv.config();
@@ -13,7 +14,7 @@ const app = express();
 
 app.use(cors()); // Enable CORS
 
-app.use("/assets", express.static("assets", {
+app.use("/assets", express.static(path.join(__dirname, "assets"), {
   setHeaders: (res, path) => {
     if (path.endsWith(".css")) {
       res.setHeader("Content-Type", "text/css");
@@ -24,42 +25,42 @@ app.use("/assets", express.static("assets", {
 
 // Home Route
 app.get("/", (req, res) => {
-  res.sendFile("index.html", {root: "assets"});
+  res.sendFile("index.html");
 });
 
 // About Route
 app.get("/about", (req, res) => {
-  res.sendFile("pages/about.html", {root: "assets"});
+  res.sendFile("pages/about.html");
 });
 
 // Contact Route
 app.get("/contact", (req, res) => {
-  res.sendFile("pages/contact.html", {root: "assets"});
+  res.sendFile("pages/contact.html");
 });
 
 // blog Route
 app.get("/blog", (req, res) => {
-  res.sendFile("pages/blog.html", {root: "assets"});
+  res.sendFile("pages/blog.html");
 });
 
 // faq Route
 app.get("/faq", (req, res) => {
-  res.sendFile("pages/faq.html", {root: "assets"});
+  res.sendFile("pages/faq.html");
 });
 
 // Shop Route
 app.get("/shop", (req, res) => {
-  res.sendFile("pages/shop.html", {root: "assets"});
+  res.sendFile("pages/shop.html");
 });
 
 // Success Route
 app.get("/success", (req, res) => {
-  res.sendFile("pages/success.html", {root: "assets"});
+  res.sendFile("pages/success.html");
 });
 
 // Cancel Route
 app.get("/cancel", (req, res) => {
-  res.sendFile("pages/cancel.html", {root: "assets"});
+  res.sendFile("pages/cancel.html");
 });
 
 
