@@ -23,38 +23,34 @@ app.use("/assets", express.static(path.join(__dirname, "assets"), {
 }));
 
 
-// Home Route
-app.get("/", (req, res) => {
-  res.sendFile("index.html");
-});
-
 // About Route
 app.get("/about", (req, res) => {
-  res.sendFile("pages/about.html");
+  res.sendFile(path.join(__dirname, 'assets', 'pages', 'about.html'));
 });
 
 // Contact Route
 app.get("/contact", (req, res) => {
-  res.sendFile("pages/contact.html");
+  res.sendFile(path.join(__dirname, 'assets', 'pages', 'contact.html'));
 });
 
-// blog Route
+// Blog Route
 app.get("/blog", (req, res) => {
-  res.sendFile("pages/blog.html");
+  res.sendFile(path.join(__dirname, 'assets', 'pages', 'blog.html'));
 });
 
-// faq Route
-const path = require('path');
-
-app.get("/shop", (req, res) => {
+// FAQ Route
+app.get("/faq", (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'pages', 'faq.html'));
 });
 
 // Shop Route
-const path = require('path');
-
 app.get("/shop", (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'pages', 'shop.html'));
+});
+
+// Catch-all Route
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, 'assets', 'index.html'));
 });
 
 // Success Route
