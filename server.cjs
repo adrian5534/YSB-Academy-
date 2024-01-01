@@ -44,8 +44,10 @@ app.get("/blog", (req, res) => {
 });
 
 // faq Route
-app.get("/faq", (req, res) => {
-  res.sendFile("pages/faq.html");
+const path = require('path');
+
+app.get("/shop", (req, res) => {
+  res.sendFile(path.join(__dirname, 'assets', 'pages', 'faq.html'));
 });
 
 // Shop Route
