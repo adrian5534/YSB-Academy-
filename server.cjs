@@ -7,7 +7,7 @@ const path = require('path');
 
 // Load Variables
 dotenv.config();
-
+ 
 
 // Start Server
 const app = express();
@@ -53,10 +53,6 @@ app.get("/checkout", (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'pages', 'checkout.html'));
 });
 
-// Catch-all Route
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, 'assets', 'index.html'));
-});
 
 // Success Route
 app.get("/success", (req, res) => {
@@ -66,6 +62,11 @@ app.get("/success", (req, res) => {
 // Cancel Route
 app.get("/cancel", (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'pages', 'cancel.html'));
+});
+
+// Catch-all Route
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, 'assets', 'index.html'));
 });
 
 
