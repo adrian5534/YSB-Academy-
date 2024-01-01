@@ -48,6 +48,11 @@ app.get("/shop", (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'pages', 'shop.html'));
 });
 
+// Checkout Route
+app.get("/checkout", (req, res) => {
+  res.sendFile(path.join(__dirname, 'assets', 'pages', 'checkout.html'));
+});
+
 // Catch-all Route
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'index.html'));
