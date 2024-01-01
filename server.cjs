@@ -55,12 +55,12 @@ app.get("*", (req, res) => {
 
 // Success Route
 app.get("/success", (req, res) => {
-  res.sendFile("pages/success.html");
+  res.sendFile(path.join(__dirname, 'assets', 'pages', 'success.html'));
 });
 
 // Cancel Route
 app.get("/cancel", (req, res) => {
-  res.sendFile("pages/cancel.html");
+  res.sendFile(path.join(__dirname, 'assets', 'pages', 'cancel.html'));
 });
 
 
