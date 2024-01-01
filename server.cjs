@@ -72,7 +72,7 @@ app.get("*", (req, res) => {
 
   
 
-app.use(express.static("assets"));
+app.use(express.static("dist"));
 app.use(express.json());
 
 let stripeGateway = stripe(process.env.stripe_api, {
