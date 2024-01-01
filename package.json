@@ -9,7 +9,7 @@
     "start": "node server.cjs",
     "dev": "nodemon server.cjs",
     "build": "babel assets/js --out-dir dist && npm run copy",
-    "copy": "copyfiles -f assets/index.html dist"
+    "copy": "copyfiles -f assets/**/*.html dist"
   },
   "keywords": [],
   "author": "",
