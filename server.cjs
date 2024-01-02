@@ -44,15 +44,14 @@ app.get("/faq", (req, res) => {
 });
 
 // Shop Route
-app.get("/shop", (req, res) => {
-  res.sendFile(path.join(__dirname, 'assets', 'pages', 'shop.html'));
+app.get('/shop', function(req, res) {
+  res.sendFile(path.resolve(__dirname, 'assets/pages/shop.html'));
 });
 
 // Checkout Route
 app.get("/checkout", (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'pages', 'checkout.html'));
 });
-
 
 // Success Route
 app.get("/success", (req, res) => {
@@ -64,15 +63,16 @@ app.get("/cancel", (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'pages', 'cancel.html'));
 });
 
-// Catch-all Route
-app.get("*", (req, res) => {
+// Catch-all Route (moved to the end)
+app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'index.html'));
 });
 
 
+
   
 
-app.use(express.static("dist"));
+app.use(express.static("assets"));
 app.use(express.json());
 
 let stripeGateway = stripe(process.env.stripe_api, {
