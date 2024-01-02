@@ -14,7 +14,7 @@ const app = express();
 
 app.use(cors()); // Enable CORS
 
-app.use("/assets", express.static(path.join(__dirname, "assets"), {
+app.use(express.static(path.join(__dirname, 'assets', 'pages'), {
   setHeaders: (res, path) => {
     if (path.endsWith(".css")) {
       res.setHeader("Content-Type", "text/css");
@@ -81,7 +81,7 @@ let stripeGateway = stripe(process.env.stripe_api, {
  
 const api = new MetaApi(process.env.meta_api,);
 
-app.post('https://mt-provisioning-api-v1.agiliumtrade.agiliumtrade.ai/users/current/accounts', async (req, res) => {
+app.post('/create-account', async (req, res) => {
   const {login, password, server} = req.body;
   try {
     const account = await api.metatraderAccountApi.createAccount({
@@ -101,6 +101,27 @@ app.post('https://mt-provisioning-api-v1.agiliumtrade.agiliumtrade.ai/users/curr
     res.status(500).json({message: error.message});
   }
 });
+
+//app.post('https://mt-provisioning-api-v1.agiliumtrade.agiliumtrade.ai/users/current/accounts', async (req, res) => {
+  //const {login, password, server} = req.body;
+  //try {
+    //const account = await api.metatraderAccountApi.createAccount({
+      //name: 'User account',
+      //type: 'cloud',
+      //login: login,
+      //password: password,
+      //server: server,
+      // Add other necessary properties
+    //}, {
+      //headers: {
+        //'auth-token': process.env.meta_api, // access the auth token from environment variables
+      //}
+    //});
+    //res.json(account);
+  //} catch (error) {
+   // res.status(500).json({message: error.message});
+  //}
+//});
 
 app.post("/stripe-checkout", async (req, res) => {
   const lineItems = req.body.items.map((item) => {
