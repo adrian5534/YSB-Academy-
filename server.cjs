@@ -64,7 +64,7 @@ app.get("/cancel", (req, res) => {
 });
 
 // Catch-all Route (moved to the end)
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'index.html'));
 });
 
@@ -72,7 +72,7 @@ app.get("/", (req, res) => {
 
   
 
-app.use(express.static("assets"));
+app.use(express.static("dist"));
 app.use(express.json());
 
 let stripeGateway = stripe(process.env.stripe_api, {
