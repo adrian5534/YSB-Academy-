@@ -23,6 +23,9 @@ app.use(express.static(path.join(__dirname, 'assets', 'pages'), {
 }));
 
 
+app.use(express.static("dist"));
+app.use(express.json());
+
 // About Route
 app.get("/about", (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'pages', 'about.html'));
@@ -69,12 +72,7 @@ app.get("*", (req, res) => {
 });
 
 
-
-  
-
-app.use(express.static("dist"));
-app.use(express.json());
-
+// Stripe Gateway
 let stripeGateway = stripe(process.env.stripe_api, {
   timeout: 5000, // Set the timeout to 5 seconds (adjust as needed)
 });
