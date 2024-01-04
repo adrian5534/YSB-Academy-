@@ -8,9 +8,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.cjs",
     "dev": "nodemon server.cjs",
-    "build": "babel assets/js --out-dir dist && npm run copy",
-    "copy": "copyfiles -f assets/**/*.html dist && copyfiles -f assets/index.html dist && copyfiles -f assets/images/**/* dist/images && copyfiles -f assets/css/**/* dist/css"
-  },
+    "clean": "rimraf dist",
+    "build": "npm run clean && babel assets/js --out-dir dist/js && npm run copy",
+    "copy": "copyfiles -u 1 'assets/**/*.{html,css,js,jpg,png,svg,LICENSE}' dist"
+   },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -28,6 +29,7 @@
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.23.6",
-    "copyfiles": "^2.4.1"
+    "copyfiles": "^2.4.1",
+    "rimraf": "^5.0.5"
   }
 }

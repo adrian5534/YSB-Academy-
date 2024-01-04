@@ -51,9 +51,9 @@ app.get('/shop', function(req, res) {
   res.sendFile(path.resolve(__dirname, 'assets/pages/shop.html'));
 });
 
-// Checkout Route
-app.get("/checkout", (req, res) => {
-  res.sendFile(path.join(__dirname, 'assets', 'pages', 'checkout.html'));
+// mt5-provisioning-profile
+app.get('/mt5-provisioning-profile', function(req, res) {
+  res.sendFile(path.resolve(__dirname, 'assets/pages/mt5-provisioning-profile.html'));
 });
 
 // Success Route
@@ -70,7 +70,7 @@ app.get("/cancel", (req, res) => {
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'index.html'));
 });
-
+ 
 
 // Stripe Gateway
 let stripeGateway = stripe(process.env.stripe_api, {
