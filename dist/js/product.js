@@ -1,39 +1,39 @@
+"use strict";
+
 // Set your Deriv API endpoint and token
-const apiEndpoint = 'INSERT_API_ENDPOINT_HERE';
-const apiToken = 'INSERT_API_TOKEN_HERE';
-
-const replayButton = document.querySelector('.replay-button');
-const timeRange = document.querySelector('.time-range');
-const currentTime = document.querySelector('.current-time');
-
-let historicalData = [];
+var apiEndpoint = 'INSERT_API_ENDPOINT_HERE';
+var apiToken = 'INSERT_API_TOKEN_HERE';
+var replayButton = document.querySelector('.replay-button');
+var timeRange = document.querySelector('.time-range');
+var currentTime = document.querySelector('.current-time');
+var historicalData = [];
 
 // Fetch historical data using the Deriv API
 function fetchHistoricalData() {
-  const apiUrl = `${apiEndpoint}/candles/history`;
-  const symbol = 'symbol_name'; // Replace with the desired symbol
-  const timeframe = 'timeframe_value'; // Replace with the desired timeframe
+  var apiUrl = "".concat(apiEndpoint, "/candles/history");
+  var symbol = 'symbol_name'; // Replace with the desired symbol
+  var timeframe = 'timeframe_value'; // Replace with the desired timeframe
 
-  fetch(`${apiUrl}?symbol=${symbol}&timeframe=${timeframe}`, {
-    headers: { Authorization: `Bearer ${apiToken}` },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      historicalData = data.candles;
-      initializeReplayBar();
-    })
-    .catch((error) => {
-      console.error('Error fetching historical data:', error);
-    });
+  fetch("".concat(apiUrl, "?symbol=").concat(symbol, "&timeframe=").concat(timeframe), {
+    headers: {
+      Authorization: "Bearer ".concat(apiToken)
+    }
+  }).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    historicalData = data.candles;
+    initializeReplayBar();
+  })["catch"](function (error) {
+    console.error('Error fetching historical data:', error);
+  });
 }
 
 // Initialize the replay bar functionality
 function initializeReplayBar() {
-  const totalDataPoints = historicalData.length;
+  var totalDataPoints = historicalData.length;
   timeRange.min = '0';
   timeRange.max = (totalDataPoints - 1).toString();
   timeRange.value = '0';
-
   replayButton.addEventListener('click', toggleReplay);
   timeRange.addEventListener('input', updateCurrentTime);
 }
@@ -50,13 +50,11 @@ function toggleReplay() {
 }
 
 // Start the replay
-let replayInterval;
-
+var replayInterval;
 function startReplay() {
-  const startingIndex = parseInt(timeRange.value, 10);
-  replayInterval = setInterval(() => {
-    const currentIndex = parseInt(timeRange.value, 10);
-
+  var startingIndex = parseInt(timeRange.value, 10);
+  replayInterval = setInterval(function () {
+    var currentIndex = parseInt(timeRange.value, 10);
     if (currentIndex < historicalData.length - 1) {
       timeRange.value = (currentIndex + 1).toString();
       updateCurrentTime();
@@ -73,11 +71,11 @@ function pauseReplay() {
 
 // Update the current time display
 function updateCurrentTime() {
-  const currentIndex = parseInt(timeRange.value, 10);
-  const currentDataPoint = historicalData[currentIndex];
-  
+  var currentIndex = parseInt(timeRange.value, 10);
+  var currentDataPoint = historicalData[currentIndex];
+
   // Adjust the timestamp format based on the historical data structure
-  const timestamp = currentDataPoint.timestamp;
+  var timestamp = currentDataPoint.timestamp;
   currentTime.textContent = timestamp;
 }
 
