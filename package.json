@@ -8,8 +8,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.cjs",
     "dev": "nodemon server.cjs",
-    "build": "babel assets/js --out-dir dist && npm run copy",
-    "copy": "copyfiles -f assets/**/*.html dist && copyfiles -f assets/index.html dist && copyfiles -f assets/images/**/* dist/images && copyfiles -f assets/css/**/* dist/css"
+    "clean": "rimraf dist",
+    "build": "npm run clean && babel assets/js --out-dir dist/js && npm run copy && npm run minify:html && npm run minify:css && npm run minify:js",
+    "copy": "copyfiles -u 1 'assets/**/*.html' 'assets/**/*.css' 'assets/**/*.{png,jpg,svg}' dist",
+    "minify:html": "html-minifier --input-dir dist --output-dir dist --file-ext html --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true",
+    "minify:css": "find dist/css -name '*.css' -exec cleancss -o {} {} \\;",
+    "minify:js": "terser -c -m -o dist/js/output.min.js -- dist/js/*.js"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +32,10 @@
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.23.6",
-    "copyfiles": "^2.4.1"
+    "clean-css-cli": "^5.6.3",
+    "copyfiles": "^2.4.1",
+    "html-minifier": "^4.0.0",
+    "rimraf": "^5.0.5",
+    "terser": "^5.26.0"
   }
 }
