@@ -47,8 +47,8 @@ app.get("/faq", (req, res) => {
 });
 
 // Shop Route
-app.get("/shop", (req, res) => {
-  res.sendFile(path.join(__dirname, 'assets', 'pages', 'shop.html'));
+app.get('/shop', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'pages', 'shop.html'));
 });
 
 // mt5-provisioning-profile
