@@ -1,4 +1,5 @@
 const express = require("express");
+const morgan = require("morgan");
 const dotenv = require("dotenv");
 const stripe = require("stripe");
 const MetaApi = require('metaapi.cloud-sdk').default;
@@ -11,6 +12,11 @@ dotenv.config();
 
 // Start Server
 const app = express();
+
+
+
+// Middlewares
+app.use(morgan("dev"));
 
 app.use(cors()); // Enable CORS
 
