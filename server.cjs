@@ -25,15 +25,9 @@ app.use(express.static(path.join(__dirname, 'assets', 'pages'), {
 
 app.use(express.static("dist"));
 app.use(express.json());
-
-// About Route
-app.get("/about", (req, res) => {
-  res.sendFile(path.join(__dirname, 'assets', 'pages', 'about.html'));
-});
-
-// Contact Route
-app.get("/contact", (req, res) => {
-  res.sendFile(path.join(__dirname, 'assets', 'pages', 'contact.html'));
+// Index Route
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, 'assets', 'index.html'));
 });
 
 // Blog Route
@@ -51,7 +45,7 @@ app.get('/shop', (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'pages', 'shop.html'));
 });
 
-// mt5-provisioning-profile
+// mt5-provisioning-profile Route
 app.get('/mt5-provisioning-profile', function(req, res) {
   res.sendFile(path.resolve(__dirname, 'assets/pages/mt5-provisioning-profile.html'));
 });
@@ -69,6 +63,11 @@ app.get("/cancel", (req, res) => {
 // Catch-all Route (moved to the end)
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'index.html'));
+});
+
+// 404 Route
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, 'assets', 'pages', '404.html'));
 });
  
 
