@@ -60,10 +60,6 @@ app.get("/cancel", (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'pages', 'cancel.html'));
 });
 
-// Catch-all Route (moved to the end)
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, 'assets', 'index.html'));
-});
 
 // 404 Route
 app.use((req, res) => {
