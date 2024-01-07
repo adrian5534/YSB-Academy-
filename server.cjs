@@ -35,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'assets', 'pages'), {
 
 app.use(express.static("dist"));
 app.use(express.json());
+
 // Index Route
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'index.html'));
