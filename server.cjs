@@ -13,13 +13,17 @@ dotenv.config();
 // Start Server
 const app = express();
 
-
-
-// Middlewares
-app.use(morgan("dev"));
+// Middleware
+app.use(morgan('dev'));
 
 app.use(cors()); // Enable CORS
 
+// Serve static files from the "css", "js", and "images" directories
+app.use(express.static(path.join(__dirname, 'css')));
+app.use(express.static(path.join(__dirname, 'js')));
+app.use(express.static(path.join(__dirname, 'images')));
+
+// Continue serving static files from the "assets/pages" directory
 app.use(express.static(path.join(__dirname, 'assets', 'pages'), {
   setHeaders: (res, path) => {
     if (path.endsWith(".css")) {
@@ -29,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'assets', 'pages'), {
 }));
 
 
-//app.use(express.static("dist"));
+app.use(express.static("dist"));
 app.use(express.json());
 // Index Route
 app.get("/", (req, res) => {
