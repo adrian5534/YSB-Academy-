@@ -36,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'assets', 'pages'), {
 app.use(express.static("dist"));
 app.use(express.json());
 
+
 // Index Route
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'index.html'));
@@ -56,6 +57,7 @@ app.get('/shop', (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'pages', 'shop.html'));
 });
 
+
 // mt5-provisioning-profile Route
 app.get('/mt5-provisioning-profile', function(req, res) {
   res.sendFile(path.resolve(__dirname, 'assets/pages/mt5-provisioning-profile.html'));
@@ -71,17 +73,6 @@ app.get("/cancel", (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'pages', 'cancel.html'));
 });
 
-
-// 404 Route
-app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, 'assets', 'pages', '404.html'));
-});
- 
-
-// Stripe Gateway
-let stripeGateway = stripe(process.env.stripe_api, {
-  timeout: 5000, // Set the timeout to 5 seconds (adjust as needed)
-});
  
 const api = new MetaApi(process.env.meta_api,);
 
@@ -127,6 +118,12 @@ app.post('/create-account', async (req, res) => {
   //}
 //});
 
+
+// Stripe Gateway
+let stripeGateway = stripe(process.env.stripe_api, {
+  timeout: 5000, // Set the timeout to 5 seconds (adjust as needed)
+});
+
 app.post("/stripe-checkout", async (req, res) => {
   const lineItems = req.body.items.map((item) => {
     const unitAmount = parseInt(item.price.replace(/[^0-9.-]+/g, "") * 100);
@@ -152,11 +149,11 @@ app.post("/stripe-checkout", async (req, res) => {
     // payment_method_types: ["card"],
     payment_method_types: ["card"],
     mode: "payment",
-    success_url: "http://localhost:3000/success",
-    cancel_url: "http://localhost:3000/cancel",
+    success_url: "http://localhost:3000/pages/success.html",
+    cancel_url: "http://localhost:3000/pages/cancel.html",
     line_items: lineItems,
 
-    // Asking Address In Stripe 
+    // Asking Address In Stripe  
     billing_address_collection: "required"
   });
   res.json(session.url);
