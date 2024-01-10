@@ -1,0 +1,43 @@
+{
+  "api": {
+    "ysbapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "ysbfunction"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "ysbfunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_ysbfunction_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ysbfunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_ysbfunction_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ysbfunction"
+        }
+      ]
+    }
+  }
+}
