@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/ysb-api": {
+      "name": "/ysb-api",
+      "lambdaFunction": "ysbfunction",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
