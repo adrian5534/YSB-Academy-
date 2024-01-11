@@ -1,7 +1,8 @@
+
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const MetaApi = require('metaapi.cloud-sdk').default;
 const api = new MetaApi(process.env.meta_api);
-
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 /**
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
  */

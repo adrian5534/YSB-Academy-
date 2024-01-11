@@ -15,11 +15,15 @@
       "function": {
         "ysbfunction": {
           "deploymentBucketName": "amplify-amplify77e26ae809bf4-staging-153823-deployment",
-          "s3Key": "amplify-builds/ysbfunction-7846634835534d497454-build.zip"
+          "s3Key": "amplify-builds/ysbfunction-353758354e64454c4b65-build.zip",
+          "metaApi": "sk_test_51NhgPGBQNwcJUZaolMVemO1ym12GZCacGZd73yqhyiLSTlvfig16VBQ5eVIOZDh4VCBp2dzAo6rookentVwxMdX9000x3V3Hfh"
         }
       },
       "api": {
         "ysbapi": {}
+      },
+      "auth": {
+        "YSBAcademy": {}
       }
     }
   }

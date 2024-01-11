@@ -1,3 +1,9 @@
 {
-  "lambdaLayers": []
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "metaApi",
+      "environmentVariableName": "meta_api"
+    }
+  ]
 }
