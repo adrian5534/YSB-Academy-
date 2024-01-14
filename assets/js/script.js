@@ -1,18 +1,5 @@
 'use strict';
 
-
-import Amplify, { API, graphqlOperation } from 'aws-amplify';
-import awsconfig from './amplifyconfiguration.json';
-import { listTodos } from './graphql/queries';
-
-Amplify.configure(awsconfig);
-
-(async () => {
-  const todos = await API.graphql(graphqlOperation(listTodos));
-  console.log(todos);
-})();
-
-
 /**
  * add event on element
  */
