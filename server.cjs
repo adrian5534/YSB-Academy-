@@ -160,6 +160,34 @@ app.post("/stripe-checkout", async (req, res) => {
 }); 
 
 
+const createAccount = async (login, password, server) => {
+  const response = await fetch('/create-account', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ login, password, server }),
+  });
+  const account = await response.json();
+  return account;
+};
+
+const createCheckoutSession = async (items) => {
+  const response = await fetch('/stripe-checkout', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ items }),
+  });
+  const sessionUrl = await response.json();
+  return sessionUrl;
+};
+
+const stripe = Stripe(process.env.stripe_api);
+const sessionUrl = await createCheckoutSession(items);
+window.location.href = sessionUrl;
+
 
 app.listen(3000, () => {
   console.log("listening on port 3000")
