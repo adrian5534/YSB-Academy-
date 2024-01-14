@@ -1,5 +1,28 @@
 'use strict';
 
+// This code should be in your frontend JavaScript file
+const createCheckoutSession = async (items) => {
+  const response = await fetch('http://localhost:3000/stripe-checkout', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ items }),
+  });
+  const sessionUrl = await response.json();
+  return sessionUrl;
+};
+
+// Replace 'items' with your actual items
+const items = [...]; 
+
+const createSessionAndRedirect = async () => {
+  const sessionUrl = await createCheckoutSession(items);
+  window.location.href = sessionUrl;
+};
+
+createSessionAndRedirect();
+
 /**
  * add event on element
  */
