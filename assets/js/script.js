@@ -14,7 +14,21 @@ const createCheckoutSession = async (items) => {
 };
 
 // Replace 'items' with your actual items
-const items = [...]; 
+const items = [
+
+  {
+    name: 'Forex Basic 1',
+    price: '$50'
+  },
+  {
+    name: 'Forex Basic 2',
+    price: '$150'
+  },
+
+  // Add more items as needed
+  
+
+]; 
 
 const createSessionAndRedirect = async () => {
   const sessionUrl = await createCheckoutSession(items);
