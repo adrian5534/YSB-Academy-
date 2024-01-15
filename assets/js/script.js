@@ -36,6 +36,8 @@ const createSessionAndRedirect = async () => {
 };
 
 createSessionAndRedirect();
+const sessionUrl = await createCheckoutSession(items);
+window.location.href = sessionUrl;
 
 /**
  * add event on element
