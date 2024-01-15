@@ -1,43 +1,19 @@
 'use strict';
+import Amplify from 'aws-amplify';
+import awsconfig from '../../src/aws-exports';
 
-// This code should be in your frontend JavaScript file
-const createCheckoutSession = async (items) => {
-  const response = await fetch('http://localhost:3000/stripe-checkout', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ items }),
-  });
-  const sessionUrl = await response.json();
-  return sessionUrl;
-};
+Amplify.configure(awsconfig);
 
-// Replace 'items' with your actual items
-const items = [
+import { Auth } from 'aws-amplify';
 
-  {
-    name: 'Forex Basic 1',
-    price: '$50'
-  },
-  {
-    name: 'Forex Basic 2',
-    price: '$150'
-  },
-
-  // Add more items as needed
-  
-
-]; 
-
-const createSessionAndRedirect = async () => {
-  const sessionUrl = await createCheckoutSession(items);
-  window.location.href = sessionUrl;
-};
-
-createSessionAndRedirect();
-const sessionUrl = await createCheckoutSession(items);
-window.location.href = sessionUrl;
+async function signIn() {
+  try {
+    const user = await Auth.signIn(username, password);
+    console.log('User signed in:', user);
+  } catch (error) {
+    console.log('Error signing in:', error);
+  }
+}
 
 /**
  * add event on element
