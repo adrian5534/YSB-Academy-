@@ -1,19 +1,5 @@
 'use strict';
-import Amplify from 'aws-amplify';
-import awsconfig from '../../src/aws-exports';
 
-Amplify.configure(awsconfig);
-
-import { Auth } from 'aws-amplify';
-
-async function signIn() {
-  try {
-    const user = await Auth.signIn(username, password);
-    console.log('User signed in:', user);
-  } catch (error) {
-    console.log('Error signing in:', error);
-  }
-}
 
 /**
  * add event on element

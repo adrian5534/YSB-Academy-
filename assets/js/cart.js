@@ -4,6 +4,8 @@
  // icon.addEventListener('click', addCartClicked);
 //});
 
+var stripe = Stripe('pk_test_51NhgPGBQNwcJUZaoqu5vmRrhrUrTaxsklnJP2bKdnRauLYE9iQ1i7tIBC9LZH5aLNyGsjolYwihENqdcQvq1vLV400nyuKcBin');
+
 const items = [
   {
     name: 'Forex Basic 1',
@@ -17,6 +19,27 @@ const items = [
 ];
 
 const payBtn = document.querySelector(".btn-buy");
+
+fetch('/create-checkout-session', {
+  method: 'POST',
+})
+.then(function(response) {
+  return response.json();
+})
+.then(function(session) {
+  return stripe.redirectToCheckout({ sessionId: session.id });
+})
+.then(function(result) {
+  // If `redirectToCheckout` fails due to a browser or network
+  // error, you should display the localized error message to your
+  // customer using `error.message`.
+  if (result.error) {
+    alert(result.error.message);
+  }
+})
+.catch(function(error) {
+  console.error('Error:', error);
+});
 
 payBtn.addEventListener("click", () => {
   fetch("/stripe-checkout", {
