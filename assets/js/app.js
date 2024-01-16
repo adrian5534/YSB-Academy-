@@ -2,15 +2,27 @@
 
 // Import Amplify 
 import Amplify from 'aws-amplify';
-import awsconfig from './aws-exports'; // Import Amplify AWS Configuration
 
 // Initialize Amplify
-Amplify.configure(awsconfig);
-
+Amplify.configure({
+    Auth: {
+      region: 'us-east-2',
+      userPoolId: 'us-east-2_J7EGcgGs4',
+      userPoolWebClientId: '7p8emeachnuchhjnug55n0cbf',
+    },
+    API: {
+      endpoints: [
+        {
+          name: "ysbapi",
+          endpoint: "https://3v47g9v5u2.execute-api.us-east-2.amazonaws.com/staging",
+        }
+      ]
+    }
+  });
 document.addEventListener('DOMContentLoaded', function() {
     
     // AWS Amplify Backend API Endpoint
-    const apiEndpoint = 'https://3v47g9v5u2.execute-api.us-east-2.amazonaws.com'
+    const apiEndpoint = 'https://3v47g9v5u2.execute-api.us-east-2.amazonaws.com/staging'
 });
     // Function to fetch data from the backend API 
         function fetchData() {
