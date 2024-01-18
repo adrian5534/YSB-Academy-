@@ -15,9 +15,6 @@
     },
     "s3Key": {
       "Type": "String"
-    },
-    "metaApi": {
-      "Type": "String"
     }
   },
   "Conditions": {
@@ -50,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "ysbfunction",
+            "createaccount",
             {
               "Fn::Join": [
                 "",
                 [
-                  "ysbfunction",
+                  "createaccount",
                   "-",
                   {
                     "Ref": "env"
@@ -72,9 +69,6 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
-            },
-            "meta_api": {
-              "Ref": "metaApi"
             }
           }
         },
@@ -95,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "ysbacademyLambdaRole9e78b4a8",
+            "ysbacademyLambdaRolec4621e95",
             {
               "Fn::Join": [
                 "",
                 [
-                  "ysbacademyLambdaRole9e78b4a8",
+                  "ysbacademyLambdaRolec4621e95",
                   "-",
                   {
                     "Ref": "env"

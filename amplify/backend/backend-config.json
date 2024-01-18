@@ -1,27 +1,6 @@
 {
   "api": {
-    "YSBAcademy": {
-      "dependsOn": [],
-      "output": {
-        "authConfig": {
-          "additionalAuthenticationProviders": [
-            {
-              "authenticationType": "AWS_IAM"
-            }
-          ],
-          "defaultAuthentication": {
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 30,
-              "description": "api key description"
-            },
-            "authenticationType": "API_KEY"
-          }
-        }
-      },
-      "providerPlugin": "awscloudformation",
-      "service": "AppSync"
-    },
-    "ysbapi": {
+    "apiysba": {
       "dependsOn": [
         {
           "attributes": [
@@ -29,78 +8,121 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "ysbfunction"
+          "resourceName": "ysbalambda"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "stripecheckout"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "createaccount"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "cancel"
         }
       ],
       "providerPlugin": "awscloudformation",
       "service": "API Gateway"
     }
   },
-  "auth": {
-    "YSBAcademy": {
-      "customAuth": false,
-      "dependsOn": [],
-      "frontendAuthConfig": {
-        "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
-        ],
-        "passwordProtectionSettings": {
-          "passwordPolicyCharacters": [
-            "REQUIRES_LOWERCASE",
-            "REQUIRES_NUMBERS",
-            "REQUIRES_SYMBOLS",
-            "REQUIRES_UPPERCASE"
-          ],
-          "passwordPolicyMinLength": 8
-        },
-        "signupAttributes": [
-          "NAME",
-          "EMAIL",
-          "ADDRESS",
-          "PHONE_NUMBER"
-        ],
-        "socialProviders": [],
-        "usernameAttributes": [
-          "EMAIL"
-        ],
-        "verificationMechanisms": [
-          "EMAIL"
-        ]
-      },
-      "providerPlugin": "awscloudformation",
-      "service": "Cognito"
-    }
-  },
   "function": {
-    "ysbfunction": {
+    "cancel": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "createaccount": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "stripecheckout": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "ysbalambda": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
   },
   "parameters": {
-    "AMPLIFY_function_ysbfunction_deploymentBucketName": {
+    "AMPLIFY_function_cancel_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "ysbfunction"
+          "resourceName": "cancel"
         }
       ]
     },
-    "AMPLIFY_function_ysbfunction_metaApi": {
+    "AMPLIFY_function_cancel_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "ysbfunction"
+          "resourceName": "cancel"
         }
       ]
     },
-    "AMPLIFY_function_ysbfunction_s3Key": {
+    "AMPLIFY_function_createaccount_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "ysbfunction"
+          "resourceName": "createaccount"
+        }
+      ]
+    },
+    "AMPLIFY_function_createaccount_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "createaccount"
+        }
+      ]
+    },
+    "AMPLIFY_function_stripecheckout_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "stripecheckout"
+        }
+      ]
+    },
+    "AMPLIFY_function_stripecheckout_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "stripecheckout"
+        }
+      ]
+    },
+    "AMPLIFY_function_ysbalambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ysbalambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_ysbalambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ysbalambda"
         }
       ]
     }
