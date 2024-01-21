@@ -28,7 +28,11 @@
         "cancel": {
           "deploymentBucketName": "amplify-ysbacademy-dev-120425-deployment",
           "s3Key": "amplify-builds/cancel-7a566c2b78496a776d55-build.zip"
-        }
+        },
+        "ysbacademy": {
+          "secretsPathAmplifyAppId": "d11ezmtuxzn9uk"
+        },
+        "ysbstripe": {}
       },
       "api": {
         "apiysba": {}
