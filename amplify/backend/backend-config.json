@@ -147,6 +147,14 @@
         }
       ]
     },
+    "AMPLIFY_function_ysbacademy_secretsPathAmplifyAppId": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ysbacademy"
+        }
+      ]
+    },
     "AMPLIFY_function_ysbalambda_deploymentBucketName": {
       "usedBy": [
         {
