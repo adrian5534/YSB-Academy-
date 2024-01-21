@@ -162,6 +162,22 @@
           "resourceName": "ysbalambda"
         }
       ]
+    },
+    "AMPLIFY_storage_ysbacademye05f4115_bucketName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "ysbacademye05f4115"
+        }
+      ]
+    },
+    "AMPLIFY_storage_ysbacademye05f4115_region": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "ysbacademye05f4115"
+        }
+      ]
     }
   },
   "storage": {
