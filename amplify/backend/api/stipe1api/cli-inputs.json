@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/stripe": {
+      "name": "/stripe",
+      "lambdaFunction": "stripckout",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

@@ -28,7 +28,10 @@
         "ysbacademy": {
           "secretsPathAmplifyAppId": "d11ezmtuxzn9uk"
         },
-        "ysbstripe": {}
+        "ysbstripe": {},
+        "stripckout": {
+          "secretsPathAmplifyAppId": "d11ezmtuxzn9uk"
+        }
       },
       "auth": {
         "YSBAcademy": {}

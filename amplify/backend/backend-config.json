@@ -1,5 +1,20 @@
 {
-  "api": {},
+  "api": {
+    "stipe1api": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "stripckout"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "auth": {
     "YSBAcademy": {
       "customAuth": false,
@@ -48,6 +63,12 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "stripckout": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "stripecheckout": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -84,6 +105,14 @@
         {
           "category": "function",
           "resourceName": "createaccount"
+        }
+      ]
+    },
+    "AMPLIFY_function_stripckout_secretsPathAmplifyAppId": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "stripckout"
         }
       ]
     },
