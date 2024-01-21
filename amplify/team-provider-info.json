@@ -15,7 +15,7 @@
       "function": {
         "ysbalambda": {
           "deploymentBucketName": "amplify-ysbacademy-dev-120425-deployment",
-          "s3Key": "amplify-builds/ysbalambda-5a506652765165707367-build.zip"
+          "s3Key": "amplify-builds/ysbalambda-50684358706d4857627a-build.zip"
         },
         "stripecheckout": {
           "deploymentBucketName": "amplify-ysbacademy-dev-120425-deployment",
@@ -35,6 +35,12 @@
       },
       "auth": {
         "YSBAcademy": {}
+      },
+      "storage": {
+        "ysbacademye05f4115": {
+          "bucketName": "amplify-ysbacademy-dev-120425-deployment",
+          "region": "us-east-2"
+        }
       }
     }
   }

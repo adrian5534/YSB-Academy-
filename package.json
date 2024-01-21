@@ -27,7 +27,7 @@
     "metaapi.cloud-sdk": "^13.2.9",
     "morgan": "^1.10.0",
     "nodemon": "^3.0.1",
-    "stripe": "^14.12.0",
+    "stripe": "^14.13.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
