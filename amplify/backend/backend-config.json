@@ -1,44 +1,5 @@
 {
-  "api": {
-    "apiysba": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "ysbalambda"
-        },
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "stripecheckout"
-        },
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "createaccount"
-        },
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "cancel"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
-    }
-  },
+  "api": {},
   "auth": {
     "YSBAcademy": {
       "customAuth": false,
@@ -88,11 +49,6 @@
       "service": "Lambda"
     },
     "stripecheckout": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "ysbalambda": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -152,22 +108,6 @@
         {
           "category": "function",
           "resourceName": "ysbacademy"
-        }
-      ]
-    },
-    "AMPLIFY_function_ysbalambda_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "ysbalambda"
-        }
-      ]
-    },
-    "AMPLIFY_function_ysbalambda_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "ysbalambda"
         }
       ]
     },
