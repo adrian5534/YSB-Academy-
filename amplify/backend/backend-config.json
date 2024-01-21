@@ -1,6 +1,6 @@
 {
   "api": {
-    "apiysba": {
+    "stipe1api": {
       "dependsOn": [
         {
           "attributes": [
@@ -8,31 +8,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "ysbalambda"
-        },
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "stripecheckout"
-        },
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "createaccount"
-        },
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "cancel"
+          "resourceName": "stripckout"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -87,12 +63,13 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "stripecheckout": {
+    "stripckout": {
       "build": true,
+      "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "ysbalambda": {
+    "stripecheckout": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -131,6 +108,14 @@
         }
       ]
     },
+    "AMPLIFY_function_stripckout_secretsPathAmplifyAppId": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "stripckout"
+        }
+      ]
+    },
     "AMPLIFY_function_stripecheckout_deploymentBucketName": {
       "usedBy": [
         {
@@ -152,22 +137,6 @@
         {
           "category": "function",
           "resourceName": "ysbacademy"
-        }
-      ]
-    },
-    "AMPLIFY_function_ysbalambda_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "ysbalambda"
-        }
-      ]
-    },
-    "AMPLIFY_function_ysbalambda_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "ysbalambda"
         }
       ]
     },

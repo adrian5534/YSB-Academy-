@@ -1,6 +1,6 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
-    "apiysba": {
+    "stipe1api": {
       "ApiId": "string",
       "ApiName": "string",
       "RootUrl": "string"
@@ -33,14 +33,14 @@ export type AmplifyDependentResourcesAttributes = {
       "Name": "string",
       "Region": "string"
     },
-    "stripecheckout": {
+    "stripckout": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
       "Name": "string",
       "Region": "string"
     },
-    "ysbalambda": {
+    "stripecheckout": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
