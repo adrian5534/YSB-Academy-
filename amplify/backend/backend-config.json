@@ -108,6 +108,22 @@
         }
       ]
     },
+    "AMPLIFY_function_stripckout_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "stripckout"
+        }
+      ]
+    },
+    "AMPLIFY_function_stripckout_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "stripckout"
+        }
+      ]
+    },
     "AMPLIFY_function_stripckout_secretsPathAmplifyAppId": {
       "usedBy": [
         {
