@@ -21,11 +21,11 @@ See the License for the specific language governing permissions and limitations 
 */
 
 
-
-
-const express = require('express')
-const bodyParser = require('body-parser')
-const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
+const aws = require('aws-sdk');
+const express = require('express');
+const bodyParser = require('body-parser');
+const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware');
+const stripe = require('stripe');
 
 // declare a new express app
 const app = express()
@@ -39,61 +39,92 @@ app.use(function(req, res, next) {
   next()
 });
 
+// Retrieve Stripe secret key from SSM
+let stripeKey;
+let stripeGateway;
+const ssm = new aws.SSM();
+(async function getStripeKey() {
+  try {
+    const data = await ssm.getParameters({
+      Names: ["stripe_key"],
+      WithDecryption: true
+    }).promise();
 
-/**********************
- * Example get method *
- **********************/
+    stripeKey = data.Parameters[0].Value;
+    stripeGateway = stripe(stripeKey, {
+      timeout: 5000, // Set the timeout to 5 seconds
+    });
+  } catch (err) {
+    console.log(err, err.stack);
+  }
+})();
 
-app.get('/stripe', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+// Your existing express app code...
+
+// Items data
+const items = [
+  {
+    id: 1,
+    name: 'Forex Learn & Earn',
+    description: 'Join our Forex Learn & Earn Telegram Group today and embark on an exciting journey of learning, sharing, and earning in the Forex market. Take advantage of the collective wisdom of experienced traders and elevate your trading game.',
+    price: 100, // In cents
+    imageUrl: 'https://example.com/images/item1.png',
+  },
+  {
+    id: 2,
+    name: 'Forex Beginner Course',
+    description: 'Are you new to the world of Forex trading? Our Forex Beginner Course is designed to provide you with a solid foundation and essential knowledge to kickstart your journey towards becoming a successful Forex trader.',
+    price: 50, // In cents
+    imageUrl: 'https://example.com/images/item2.png',
+  },
+  {
+    id: 3,
+    name: 'Forex Advance Course',
+    description: 'Take the leap and propel your Forex trading career to new heights with our Forex Advance Course. Unlock the advanced techniques, strategies, and insights that can set you apart as a top-notch Forex trader.',
+    price: 200, // In cents
+    imageUrl: 'https://example.com/images/item2.png',
+  },
+  {
+    id: 4,
+    name: 'Forex In-Person Classes',
+    description: 'Join our Forex In-Person Classes to receive invaluable hands-on training, personal mentorship, and a supportive community of traders. Take the next step in your Forex trading journey and unlock your potential as a successful trader.',
+    price: 400, // In cents
+    imageUrl: 'https://example.com/images/item2.png',
+  },
+  // Add more items...
+];
+
+// Items Route
+app.get('/items', (req, res) => {
+  res.json(items);
 });
 
-app.get('/stripe/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
-});
+app.post("/stripe-checkout", async (req, res) => {
+  try {
+    const session = await stripeGateway.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [
+        {
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: 'Your Product Name',
+            },
+            unit_amount: 2000, // Replace with your product price
+          },
+          quantity: 1, // Replace with the quantity
+        },
+      ],
+      mode: 'payment',
+      success_url: "https://www.ysbacademy.com/pages/success.html", // success_url
+      cancel_url: "https://www.ysbacademy.com/pages/cancel.html", // cancel_url
+    });
 
-/****************************
-* Example post method *
-****************************/
-
-app.post('/stripe', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
-});
-
-app.post('/stripe/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
-});
-
-/****************************
-* Example put method *
-****************************/
-
-app.put('/stripe', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
-
-app.put('/stripe/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
-
-/****************************
-* Example delete method *
-****************************/
-
-app.delete('/stripe', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
-});
-
-app.delete('/stripe/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
+    res.json({ id: session.id });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ error: 'An error occurred while creating Stripe Checkout session.' });
+  }
 });
 
 app.listen(3000, function() {
