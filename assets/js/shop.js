@@ -2,10 +2,11 @@ let cartIcon = document.querySelector('#cart-icon');
 let cart = document.querySelector('.cart');
 let closeCart = document.querySelector('#close-cart');
 let cartContent = document.querySelector('.cart-content'); // Move the declaration and assignment of 'cartContent' above the 'addProductToCart' function
-let titleElement = document.querySelector('.product-title');
-let priceElement = document.querySelector('.price');
-let quantityElement = document.querySelector('.quantity');
+let titleElement = document.querySelector('.cart-title');
+let priceElement = document.querySelector('.cart-price');
+let quantityElement = document.querySelector('.cart-quantity');
 let productImgElement = document.querySelector('.product-img');
+
 
 let item = {
   title: titleElement ? titleElement.innerText : "",
@@ -70,7 +71,7 @@ function ready() {
     for (let i = 0; i < cartBoxes.length; i++) {
       let cartBox = cartBoxes[i];
       let titleElement = cartBox.querySelector(".cart-product-title");
-      let priceElement = cartBox.querySelector(".cart-price");
+      let priceElement = cartBox.querySelector(".price");
       let productImgElement = cartBox.querySelector(".cart-img");
       let quantityElement = cartBox.querySelector(".cart-quantity");
       if (titleElement && priceElement && productImgElement && quantityElement) {
@@ -83,10 +84,12 @@ function ready() {
     }
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
     updateTotal(); // Update the total after saving the items
+    updateCartCount(); // Update the cart count after saving the items
   }
 // Add Product To Cart
 function addProductToCart(title, price, productImg, quantity) {
   let cartContent = document.querySelector(".cart-content");
+  let cartItems = document.querySelectorAll('.detail-box'); // Assuming '.detail-box' is the class of each cart item
   if (cartContent) {
     let cartShopBox = document.createElement("div");
     cartShopBox.classList.add("cart-box");
@@ -111,10 +114,12 @@ function addProductToCart(title, price, productImg, quantity) {
       saveCartItems();
       updateTotal();
     });
+  
+    // Save the items and update the total and count after the item is fully added
+    saveCartItems();
+    updateTotal();
+    updateCartCount();
   }
-  saveCartItems();
-  updateTotal();
-  updateCartCount(); // Update the cart count after adding an item to the cart
 }
 
 // Update Cart Item Quantity
@@ -155,11 +160,11 @@ function updateCartCount() {
 
   // Update Total
   function updateTotal() {
-    let cartBoxes = document.querySelectorAll('.cart-box');
+    let detailBoxes = document.querySelectorAll('.detail-box'); // Changed '.cart-box' to '.detail-box'
     let total = 0;
-    cartBoxes.forEach(function(cartBox) {
-      let priceElement = cartBox.querySelector('.cart-price');
-      let quantityElement = cartBox.querySelector('.cart-quantity');
+    detailBoxes.forEach(function(detailBox) {
+      let priceElement = detailBox.querySelector('.cart-price'); // Changed '.cart-item-price' to '.cart-price'
+      let quantityElement = detailBox.querySelector('.cart-quantity');
       if (priceElement && quantityElement) {
         let price = parseFloat(priceElement.innerText.replace("$", ""));
         if (!isNaN(price)) { // Check if the price is a valid number
@@ -169,7 +174,7 @@ function updateCartCount() {
       }
     });
     total = Math.round(total * 100) / 100;
-    document.querySelector(".total-price").innerText = "$" + total;
+    document.querySelector(".total-price").innerText = "$" + total; // Update the total price
     // Save Total to LocalStorage
     localStorage.setItem("cartTotal", total);
     updateCartCount(); // Update the cart count after updating the total
@@ -200,4 +205,91 @@ function updateCartCount() {
     }
 
     // No more editing below this line
+    function sendCartItemsToServer() {
+      let cartItems = getCartItems(); // Assuming this function returns an array of cart items
+      if (cartItems.length === 0) {
+        console.error('No items in the cart to send to the server');
+        return; // Exit the function if the cart is empty
+      }
+      
+      // Code to send cart items to the server
+      
+
+      // Reset the cart
+      resetCart();
+      console.log('Cart items sent to the server');
+      console.log('Cart items:', cartItems);
+      console.log('Cart total:', getCartTotal());
+      console.log('Cart count:', getCartCount());
+
+    }
+
+
+    document.addEventListener("DOMContentLoaded", readySecond);
+
+    function readySecond() {
+      let cartIcon = document.querySelector('#cart-icon');
+      let cart = document.querySelector('.cart');
+      let closeCart = document.querySelector('#close-cart');
+      let cartContent = document.querySelector('.cart-content');
+      // ... rest of your code ...
     
+      let lineItems = [];
+      let cartBoxes = document.querySelectorAll(".cart-box");
+      
+
+    
+      cartBoxes.forEach(cartBox => {
+        let title = cartBox.dataset.title;
+        let priceElement = cartBox.querySelector(".price");
+        if (priceElement) {
+          let price = parseFloat(priceElement.textContent.replace('$', '')) * 100; // convert to cents
+          let quantityElement = cartBox.querySelector(".cart-quantity");
+          let quantity = parseInt(quantityElement.value);
+    
+          let item = {
+            price_data: {
+              currency: 'usd',
+              product_data: {
+                name: title,
+              },
+              unit_amount: price,
+            },
+            quantity: quantity,
+          };
+    
+          lineItems.push(item);
+        } else {
+          console.error('Could not find element with class name "cart-price"');
+        }
+      });
+
+
+if (cartBoxes.length > 0) {
+  // Your existing code to populate the lineItems array...
+
+  if (lineItems.length > 0) {
+    (async function() {
+      try {
+        let response = await fetch('https://9zxvvqfzs9.execute-api.us-east-2.amazonaws.com/dev/stripe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            lineItems: lineItems,
+          }),
+        });
+        let data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    })();
+  } else {
+    console.error('No items in the cart to send to the server');
+  }
+} else {
+  console.log('No cart items to process');
+}
+    }
