@@ -64,7 +64,7 @@ exports.handler = async (event, context) => {
       quantity: item.quantity,
     };
   });
-
+  
   // Create Checkout Session
   let session;
   try {
@@ -73,7 +73,7 @@ exports.handler = async (event, context) => {
       mode: "payment",
       success_url: "https://www.ysbacademy.com/pages/success.html",
       cancel_url: "https://www.ysbacademy.com/pages/cancel.html",
-      line_items: lineItems,
+      line_items: lineItems, // use the lineItems from above
       billing_address_collection: "required"
     });
   } catch (error) {
