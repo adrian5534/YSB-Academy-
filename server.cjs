@@ -139,7 +139,7 @@ app.post("/stripe-checkout", async (req, res) => {
         },
         unit_amount: unitAmount,
       },
-      quantity: item.quantity,
+      quantity: item.quantity, 
     };
   });
   console.log("lineItems", lineItems);
