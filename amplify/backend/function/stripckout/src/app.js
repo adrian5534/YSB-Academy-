@@ -99,22 +99,13 @@ app.get('/items', (req, res) => {
   res.json(items);
 });
 
-app.post("/stripe-checkout", async (req, res) => {
+app.post("/create-checkout-session", async (req, res) => {
   try {
+    const { line_items } = req.body; // Get line_items from request body
+
     const session = await stripeGateway.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: [
-        {
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: 'Your Product Name',
-            },
-            unit_amount: 2000, // Replace with your product price
-          },
-          quantity: 1, // Replace with the quantity
-        },
-      ],
+      line_items, // Use line_items from request body
       mode: 'payment',
       success_url: "https://www.ysbacademy.com/pages/success.html", // success_url
       cancel_url: "https://www.ysbacademy.com/pages/cancel.html", // cancel_url
@@ -122,10 +113,12 @@ app.post("/stripe-checkout", async (req, res) => {
 
     res.json({ id: session.id });
   } catch (err) {
-    console.error(err);
+    console.error('Error creating Stripe Checkout session:', err.message);
     res.status(500).send({ error: 'An error occurred while creating Stripe Checkout session.' });
   }
 });
+
+
 
 app.listen(3000, function() {
     console.log("App started")
