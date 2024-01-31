@@ -33,7 +33,7 @@ function _createCheckoutSession() {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
           _context2.next = 2;
-          return fetch('https://9zxvvqfzs9.execute-api.us-east-2.amazonaws.com/dev/create-checkout-session', {
+          return fetch('https://9zxvvqfzs9.execute-api.us-east-2.amazonaws.com/dev/stripe/create-checkout-session', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
