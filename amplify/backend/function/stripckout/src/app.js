@@ -101,11 +101,11 @@ app.get('/items', (req, res) => {
 
 app.post("/create-checkout-session", async (req, res) => {
   try {
-    const { line_items } = req.body; // Get line_items from request body
+    const { lineitems } = req.body; // Get line_items from request body
 
     const session = await stripeGateway.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items, // Use line_items from request body
+      lineitems, // Use line_items from request body
       mode: 'payment',
       success_url: "https://www.ysbacademy.com/pages/success.html", // success_url
       cancel_url: "https://www.ysbacademy.com/pages/cancel.html", // cancel_url
