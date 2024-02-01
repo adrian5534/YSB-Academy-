@@ -105,7 +105,7 @@ app.post("/create-checkout-session", async (req, res) => {
 
     const session = await stripeGateway.checkout.sessions.create({
       payment_method_types: ['card'],
-      lineitems, // Use line_items from request body
+      line_items: lineitems, // Use line_items from request body
       mode: 'payment',
       success_url: "https://www.ysbacademy.com/pages/success.html", // success_url
       cancel_url: "https://www.ysbacademy.com/pages/cancel.html", // cancel_url
