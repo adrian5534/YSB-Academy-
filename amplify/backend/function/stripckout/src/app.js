@@ -119,11 +119,11 @@ fetch('/create-checkout-session', {
 app.post("/create-checkout-session", async (req, res) => {
   console.log('req.body:', req.body); // Log the request body
   try {
-    const { lineitems } = req.body; // Get line_items from request body
+    const { lineItems } = req.body; // Get lineItems from request body
 
     const session = await stripeGateway.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: lineitems, // Use line_items from request body
+      line_items: lineItems, // Use lineItems from request body
       mode: 'payment',
       success_url: "https://www.ysbacademy.com/pages/success.html", // success_url
       cancel_url: "https://www.ysbacademy.com/pages/cancel.html", // cancel_url

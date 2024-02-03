@@ -142,7 +142,7 @@ function updateTotal() {
   let detailBoxes = document.querySelectorAll('.detail-box');
   let total = 0;
   detailBoxes.forEach(function(detailBox) {
-    let priceElement =     detailBox.querySelector('.cart-price');
+    let priceElement = detailBox.querySelector('.cart-price');
     let quantityElement = detailBox.querySelector('.cart-quantity');
     if (priceElement && quantityElement) {
       let price = parseFloat(priceElement.innerText.replace("$", ""));
