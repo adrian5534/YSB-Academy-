@@ -32,7 +32,7 @@
         "stripckout": {
           "secretsPathAmplifyAppId": "d11ezmtuxzn9uk",
           "deploymentBucketName": "amplify-ysbacademy-dev-120425-deployment",
-          "s3Key": "amplify-builds/stripckout-38303030383733736845-build.zip"
+          "s3Key": "amplify-builds/stripckout-4e4b6a7645426a435a5a-build.zip"
         }
       },
       "auth": {
