@@ -23,6 +23,7 @@ function getLineItemsFromCart() {
     };
   });
 }
+var lineItems = getLineItemsFromCart(); // Get items from cart
 function createCheckoutSession(_x) {
   return _createCheckoutSession.apply(this, arguments);
 }

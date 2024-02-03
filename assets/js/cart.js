@@ -15,7 +15,7 @@ function getLineItemsFromCart() {
     quantity: item.quantity
   }));
 }
-
+let lineItems = getLineItemsFromCart(); // Get items from cart
 async function createCheckoutSession(lineItems) {
   console.log('lineItems:', lineItems); // Log lineItems
   const response = await fetch('https://9zxvvqfzs9.execute-api.us-east-2.amazonaws.com/dev/stripe/create-checkout-session', {
