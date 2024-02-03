@@ -32,7 +32,8 @@ function _createCheckoutSession() {
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
-          _context2.next = 2;
+          console.log('lineItems:', lineItems); // Log lineItems
+          _context2.next = 3;
           return fetch('https://9zxvvqfzs9.execute-api.us-east-2.amazonaws.com/dev/stripe/create-checkout-session', {
             method: 'POST',
             headers: {
@@ -42,26 +43,26 @@ function _createCheckoutSession() {
               lineItems: lineItems
             })
           });
-        case 2:
+        case 3:
           response = _context2.sent;
           if (response.ok) {
-            _context2.next = 5;
+            _context2.next = 6;
             break;
           }
           throw new Error('Network response was not ok');
-        case 5:
-          _context2.next = 7;
+        case 6:
+          _context2.next = 8;
           return response.json();
-        case 7:
+        case 8:
           session = _context2.sent;
           if (!(!session || !session.id)) {
-            _context2.next = 10;
+            _context2.next = 11;
             break;
           }
           throw new Error('Session ID is missing');
-        case 10:
-          return _context2.abrupt("return", session);
         case 11:
+          return _context2.abrupt("return", session);
+        case 12:
         case "end":
           return _context2.stop();
       }

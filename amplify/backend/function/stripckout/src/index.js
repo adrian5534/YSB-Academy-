@@ -6,8 +6,15 @@ const stripe = require('stripe'); // Import Stripe
 const stripeGateway = stripe('sk_test_51NhgPGBQNwcJUZaolMVemO1ym12GZCacGZd73yqhyiLSTlvfig16VBQ5eVIOZDh4VCBp2dzAo6rookentVwxMdX9000x3V3Hfh');
 
 app.post("/stripe", async (req, res) => {
+  console.log('req.body:', req.body); // Log the request body
   try {
     const lineItems = req.body.lineItems;
+
+    // Check if lineItems is defined and is an array
+    if (!lineItems || !Array.isArray(lineItems)) {
+      console.error('lineItems is not an array:', lineItems);
+      return res.status(400).send({ error: 'Bad Request' });
+    }
 
     const formattedLineItems = lineItems.map(item => ({
       price_data: {

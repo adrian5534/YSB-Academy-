@@ -99,7 +99,25 @@ app.get('/items', (req, res) => {
   res.json(items);
 });
 
+let lineItems = getCartItems(); // Get items from cart
+
+// Make POST request to /create-checkout-session
+fetch('/create-checkout-session', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ lineItems }) // Send lineItems in body of request
+})
+.then(response => response.json())
+.then(data => {
+  // Handle response...
+})
+.catch((error) => {
+  console.error('Error:', error);
+});
 app.post("/create-checkout-session", async (req, res) => {
+  console.log('req.body:', req.body); // Log the request body
   try {
     const { lineitems } = req.body; // Get line_items from request body
 
