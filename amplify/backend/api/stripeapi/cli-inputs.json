@@ -1,9 +1,9 @@
 {
   "version": 1,
   "paths": {
-    "/stripe": {
-      "name": "/stripe",
-      "lambdaFunction": "stripckout",
+    "/checkout": {
+      "name": "/checkout",
+      "lambdaFunction": "stripeCheckout",
       "permissions": {
         "setting": "open"
       }
