@@ -1,20 +1,5 @@
 {
-  "api": {
-    "stripeapi": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "stripeCheckout"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
-    }
-  },
+  "api": {},
   "auth": {
     "YSBAcademy": {
       "customAuth": false,
@@ -62,11 +47,6 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
-    },
-    "stripeCheckout": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
     }
   },
   "parameters": {
@@ -99,22 +79,6 @@
         {
           "category": "function",
           "resourceName": "createaccount"
-        }
-      ]
-    },
-    "AMPLIFY_function_stripeCheckout_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "stripeCheckout"
-        }
-      ]
-    },
-    "AMPLIFY_function_stripeCheckout_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "stripeCheckout"
         }
       ]
     },

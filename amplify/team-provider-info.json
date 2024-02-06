@@ -25,10 +25,6 @@
           "secretsPathAmplifyAppId": "d11ezmtuxzn9uk"
         },
         "ysbstripe": {},
-        "stripeCheckout": {
-          "deploymentBucketName": "amplify-ysbacademy-dev-120425-deployment",
-          "s3Key": "amplify-builds/stripeCheckout-4c57306c54796a535478-build.zip"
-        },
         "stripckout": {}
       },
       "auth": {
@@ -39,9 +35,6 @@
           "bucketName": "amplify-ysbacademy-dev-120425-deployment",
           "region": "us-east-2"
         }
-      },
-      "api": {
-        "stripeapi": {}
       }
     }
   }
