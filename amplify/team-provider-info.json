@@ -13,10 +13,6 @@
     },
     "categories": {
       "function": {
-        "stripecheckout": {
-          "deploymentBucketName": "amplify-ysbacademy-dev-120425-deployment",
-          "s3Key": "amplify-builds/stripecheckout-784b7a724165587a4830-build.zip"
-        },
         "createaccount": {
           "deploymentBucketName": "amplify-ysbacademy-dev-120425-deployment",
           "s3Key": "amplify-builds/createaccount-4175306d332f327a3163-build.zip"
@@ -29,11 +25,11 @@
           "secretsPathAmplifyAppId": "d11ezmtuxzn9uk"
         },
         "ysbstripe": {},
-        "stripckout": {
-          "secretsPathAmplifyAppId": "d11ezmtuxzn9uk",
+        "stripeCheckout": {
           "deploymentBucketName": "amplify-ysbacademy-dev-120425-deployment",
-          "s3Key": "amplify-builds/stripckout-4e4b6a7645426a435a5a-build.zip"
-        }
+          "s3Key": "amplify-builds/stripeCheckout-4c57306c54796a535478-build.zip"
+        },
+        "stripckout": {}
       },
       "auth": {
         "YSBAcademy": {}
@@ -45,7 +41,7 @@
         }
       },
       "api": {
-        "stipe1api": {}
+        "stripeapi": {}
       }
     }
   }

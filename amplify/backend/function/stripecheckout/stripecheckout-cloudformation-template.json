@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "stripecheckout",
+            "stripeCheckout",
             {
               "Fn::Join": [
                 "",
                 [
-                  "stripecheckout",
+                  "stripeCheckout",
                   "-",
                   {
                     "Ref": "env"
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "ysbacademyLambdaRole8d21a5a5",
+            "ysbacademyLambdaRoled6c97852",
             {
               "Fn::Join": [
                 "",
                 [
-                  "ysbacademyLambdaRole8d21a5a5",
+                  "ysbacademyLambdaRoled6c97852",
                   "-",
                   {
                     "Ref": "env"

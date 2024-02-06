@@ -1,6 +1,6 @@
 {
   "api": {
-    "stipe1api": {
+    "stripeapi": {
       "dependsOn": [
         {
           "attributes": [
@@ -8,7 +8,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "stripckout"
+          "resourceName": "stripeCheckout"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -63,13 +63,7 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "stripckout": {
-      "build": true,
-      "dependsOn": [],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "stripecheckout": {
+    "stripeCheckout": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -108,43 +102,19 @@
         }
       ]
     },
-    "AMPLIFY_function_stripckout_deploymentBucketName": {
+    "AMPLIFY_function_stripeCheckout_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "stripckout"
+          "resourceName": "stripeCheckout"
         }
       ]
     },
-    "AMPLIFY_function_stripckout_s3Key": {
+    "AMPLIFY_function_stripeCheckout_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "stripckout"
-        }
-      ]
-    },
-    "AMPLIFY_function_stripckout_secretsPathAmplifyAppId": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "stripckout"
-        }
-      ]
-    },
-    "AMPLIFY_function_stripecheckout_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "stripecheckout"
-        }
-      ]
-    },
-    "AMPLIFY_function_stripecheckout_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "stripecheckout"
+          "resourceName": "stripeCheckout"
         }
       ]
     },
