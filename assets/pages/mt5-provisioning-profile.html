@@ -112,18 +112,18 @@ rel="stylesheet">
     <h1 class="">YSB Academy Trade Copier</h1>
     <p>Configure Trading Account</p>
     <div id="message"></div>
-    <form id="mt5-form">
-      <input type="text" id="name" placeholder="Name" required>
-      <input type="text" id="type" placeholder="Type" value="cloud-g2">
-      <input type="text" id="login" placeholder="Login" required>
-      <input type="password" id="password" placeholder="Password" required>
-      <input type="text" id="server" placeholder="Server" required>
-      <input type="text" id="platform" placeholder="Platform" value="mt5">
-      <input type="number" id="magic" placeholder="Magic">
-      <input type="text" id="keywords" placeholder="Keywords" value="YSB Academy Trade Copier">
-      <input type="number" id="quoteStreamingIntervalInSeconds" placeholder="Quote Streaming Interval In Seconds" value="1">
-      <input type="text" id="reliability" placeholder="Reliability" value="high">
-      <button type="submit">Submit</button>
+    <form id="mt5-form" autocomplete="on">
+      <input type="text" id="name" placeholder="Name" required autocomplete="name">
+      <input type="text" id="type" placeholder="Type" value="cloud-g2" autocomplete="off">
+      <input type="text" id="login" placeholder="Login" required autocomplete="username">
+      <input type="password" id="password" placeholder="Password" required autocomplete="current-password">
+      <input type="text" id="server" placeholder="Server" required autocomplete="off">
+      <input type="text" id="platform" placeholder="Platform" value="mt5" autocomplete="off">
+      <input type="number" id="magic" placeholder="Magic" autocomplete="off">
+      <input type="text" id="keywords" placeholder="Keywords" value="YSB Academy Trade Copier" autocomplete="off">
+      <input type="number" id="quoteStreamingIntervalInSeconds" placeholder="Quote Streaming Interval In Seconds" value="1" autocomplete="off">
+      <input type="text" id="reliability" placeholder="Reliability" value="high" autocomplete="off">
+      <button type="submit" id="submit-button">Submit</button>
     </form>
 
   </div>
@@ -141,6 +141,7 @@ rel="stylesheet">
 <!-- Link To JS -->
 <script src="/js/shop.js"></script>
 <script src="/js/cart.js"></script>
+
 
  <!-- Footer -->
  <footer class="footer" style="background-image: url('/images/footer-bg.png')">
