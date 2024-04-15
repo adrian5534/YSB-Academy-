@@ -147,7 +147,7 @@
       <div>
         <span><i class="fas fa-envelope-open"></i></span>
         <span>E-mail</span>
-        <span id="text">mail@ysbacademy.com</span>
+        <span id="text">support@ysbacademy.com</span>
         </div>
         <div>
           <span><i class="fas fa-map-marker-alt"></i></span>
@@ -161,24 +161,22 @@
             </div>
     </div> 
     <div id="contact-form">
-      <form>
+      <form id="myForm">
         <div>
-          <input type="text" class="form-control"
-          placeholder="First Name">
-          <input type="text" class="form-control"
-          placeholder="Last Name">
+          <input type="text" id="first_name" class="form-control" placeholder="First Name" required>
+          <input type="text" id="last_name" class="form-control" placeholder="Last Name" required>
         </div>
         <div>
-          <input type="email" class="form-control" 
-          placeholder="E-mail">
-          <input type="text" class="form-control"
-          placeholder="Phone">
+          <input type="email" id="email" class="form-control" placeholder="E-mail" required>
+          <input type="text" id="phone" class="form-control" placeholder="Phone">
         </div>
-        <textarea rows="5" placeholder="Message" class="form-control"
-        ></textarea>
-        <input type="submit" class="send-btn" value = "send message">
+        <div>
+          <input type="text" id="subject" class="form-control" placeholder="Subject" required>
+        </div>
+        <textarea rows="5" id="message" placeholder="Message" class="form-control" required></textarea>
+        <input type="submit" class="send-btn" value="Send Message">
       </form>
-
+    
       <div>
         <img src="/images/contact-png.png" alt="">
       </div>
@@ -372,6 +370,29 @@
     - custom js link 
 -->
 <script src="/js/script.js" defer></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+  function sendEmail() {
+  Email.send({
+    SecureToken: "1afab606-cffa-4c3a-b1ff-2b4e47d991a6",
+    To: "support@ysbacademy.com",
+    From: document.getElementById("email").value,
+    Subject: document.getElementById("subject").value, // Get subject value
+    Body: "Name: " + document.getElementById("first_name").value + " " + document.getElementById("last_name").value + "<br> Email: " + document.getElementById("email").value + "<br> Phone: " + document.getElementById("phone").value + "<br> Message: " + document.getElementById("message").value
+  }).then(
+    message => alert(message)
+  );
+
+    // Prevent form submission from refreshing the page
+    return false;
+  }
+
+  // Add event listener to the form submission
+  document.getElementById("myForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent default form submission
+    sendEmail(); // Call the sendEmail function
+  });
+</script>
 
 <!--
     - ionicon link
