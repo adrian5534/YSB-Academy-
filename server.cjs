@@ -47,6 +47,11 @@ app.get("/blog", (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'pages', 'blog.html'));
 });
 
+// Blog Route
+app.get("/affiliate", (req, res) => {
+  res.sendFile(path.join(__dirname, 'assets', 'pages', 'affiliate.html'));
+});
+
 // FAQ Route
 app.get("/faq", (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'pages', 'faq.html'));
