@@ -170,6 +170,9 @@
           <input type="email" id="email" class="form-control" placeholder="E-mail" required>
           <input type="text" id="phone" class="form-control" placeholder="Phone">
         </div>
+        <div>
+          <input type="text" id="subject" class="form-control" placeholder="Subject" required>
+        </div>
         <textarea rows="5" id="message" placeholder="Message" class="form-control" required></textarea>
         <input type="submit" class="send-btn" value="Send Message">
       </form>
@@ -370,15 +373,15 @@
 <script src="https://smtpjs.com/v3/smtp.js"></script>
 <script>
   function sendEmail() {
-    Email.send({
-      SecureToken: "1afab606-cffa-4c3a-b1ff-2b4e47d991a6",
-      To: "support@ysbacademy.com",
-      From: document.getElementById("email").value,
-      Subject: "New contact form submission",
-      Body: "Name: " + document.getElementById("first_name").value + " " + document.getElementById("last_name").value + "<br> Email: " + document.getElementById("email").value + "<br> Phone: " + document.getElementById("phone").value + "<br> Message: " + document.getElementById("message").value
-    }).then(
-      message => alert(message)
-    );
+  Email.send({
+    SecureToken: "1afab606-cffa-4c3a-b1ff-2b4e47d991a6",
+    To: "support@ysbacademy.com",
+    From: document.getElementById("email").value,
+    Subject: document.getElementById("subject").value, // Get subject value
+    Body: "Name: " + document.getElementById("first_name").value + " " + document.getElementById("last_name").value + "<br> Email: " + document.getElementById("email").value + "<br> Phone: " + document.getElementById("phone").value + "<br> Message: " + document.getElementById("message").value
+  }).then(
+    message => alert(message)
+  );
 
     // Prevent form submission from refreshing the page
     return false;
