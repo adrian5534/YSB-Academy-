@@ -600,5 +600,26 @@
     token: "d150e8ae-4dac-4fcc-9fe7-553c6bffb989",
   });
 </script>
+
+<!-- Promokit -->
+<script async src="https://cdn.promotekit.com/promotekit.js" data-promotekit="aedff296-0da1-45a3-9176-b9078cdb535b"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    setTimeout(function() {
+        $('a[href^="https://buy.stripe.com/"]').each(function(){
+            const oldBuyUrl = $(this).attr("href");
+            const referralId = window.promotekit_referral;
+            if (!oldBuyUrl.includes("client_reference_id")) {
+                const newBuyUrl = oldBuyUrl + "?client_reference_id=" + referralId;
+                $(this).attr("href", newBuyUrl);
+            }
+        });
+        $("[pricing-table-id]").each(function(){
+        	$(this).attr("client-reference-id", window.promotekit_referral);
+        });
+    }, 2000);
+});
+</script>
 </body>
 </html>
